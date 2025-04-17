@@ -17,8 +17,7 @@ class Router
     public function getRoute (){
 
         if ($this->uri==='/') {
-            $route=$this->routes['/home'];
-            return $route;
+            return $this->routes['/home'];
         }
         if (isset($this->routes[$this->uri])) {
             $route=$this->routes[$this->uri];
