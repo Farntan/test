@@ -11,8 +11,4 @@ return array(
     'classes\\Router' => $baseDir . '/classes/router.php',
     'classes\\config' => $baseDir . '/classes/config.php',
     'classes\\controller\\IController' => $baseDir . '/classes/interface/IController.php',
-    'controller\\ErrorController' => $baseDir . '/controller/ErrorController.php',
-    'controller\\HomeController' => $baseDir . '/controller/HomeController.php',
-    'controller\\Test1Controller' => $baseDir . '/controller/Test1Controller.php',
-    'controller\\Test2Controller' => $baseDir . '/controller/Test2Controller.php',
 );

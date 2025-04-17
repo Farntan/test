@@ -4,19 +4,12 @@ use classes\Router;
 
 
 $router=new Router();
-$controllerName=$router->getController();
-$class="controller\\".$controllerName;
-
-
-
-if (class_exists($class)) {
-    $controller=new $class($router);
-} else {
-    $controller=new \ErrorController($router);
-}
+$controller=$router->getController();
+// ** Sets the content if no other data is set in the page controller*/
 $content='Welcome!';
 $controller->setContent($content);
-$controller->getView('');
+//**end*/
+$controller->getView();
 
 
 

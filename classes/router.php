@@ -2,6 +2,8 @@
 
 namespace classes;
 
+use controller\ErrorController;
+
 class Router
 {
     public $route;
@@ -33,11 +35,24 @@ class Router
         return $route;
 
     }
-    public function getController ()
+    public function getControllerName ()
     {
         $route=$this->getRoute();
 
         return $route['controller'];
+
+    }
+
+    public function getController () :Controller
+    {
+        $controllerName=$this->getControllerName();
+        $class="controller\\".$controllerName;
+        if (class_exists($class)) {
+            $controller=new $class($this);
+        } else {
+            $controller=new ErrorController($this);
+        }
+        return $controller;
 
     }
 
