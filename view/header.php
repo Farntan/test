@@ -1,7 +1,7 @@
 <?php
-use classlibrary\Config;
+use classes\config;
 
-$config=new Config();
+$config=new config();
 
 $name=$config->get('name');
 $author=$config->get('author');

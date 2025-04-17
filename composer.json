@@ -2,7 +2,11 @@
 
     "autoload": {
         "classmap": [
-            "classlibrary/Config.php"
+            "classes/config.php",
+            "classes/router.php",
+            "classes/controller.php",
+            "controller/Test1Controller.php",
+            "trait/Include.php"
 
         ],
 
