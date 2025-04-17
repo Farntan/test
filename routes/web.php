@@ -1,5 +1,6 @@
 <?php
 return [
+
     '/home'=>[
         'name'=>'Home',
         'controller'=>'HomeController'
