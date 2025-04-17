@@ -22,7 +22,6 @@ class ComposerStaticInit5c0677f153235d6c4464beb866c2bf11
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'HelloWorld' => __DIR__ . '/../..' . '/trait/Include.php',
         'classes\\Controller' => __DIR__ . '/../..' . '/classes/controller.php',
         'classes\\Router' => __DIR__ . '/../..' . '/classes/router.php',
         'classes\\config' => __DIR__ . '/../..' . '/classes/config.php',

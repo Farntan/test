@@ -7,7 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
-    'HelloWorld' => $baseDir . '/trait/Include.php',
     'classes\\Controller' => $baseDir . '/classes/controller.php',
     'classes\\Router' => $baseDir . '/classes/router.php',
     'classes\\config' => $baseDir . '/classes/config.php',

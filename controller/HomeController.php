@@ -4,7 +4,7 @@ namespace controller;
 
 use classes\Controller;
 
-class Test1Controller extends Controller
+class HomeController extends Controller
 {
 
     public function getView (){
