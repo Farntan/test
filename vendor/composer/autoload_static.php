@@ -7,16 +7,16 @@ namespace Composer\Autoload;
 class ComposerStaticInit5c0677f153235d6c4464beb866c2bf11
 {
     public static $prefixLengthsPsr4 = array (
-        'A' => 
+        'c' => 
         array (
-            'App\\' => 4,
+            'controller\\\\' => 12,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'App\\' => 
+        'controller\\\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/app',
+            0 => __DIR__ . '/../..' . '/controller',
         ),
     );
 
@@ -25,7 +25,11 @@ class ComposerStaticInit5c0677f153235d6c4464beb866c2bf11
         'classes\\Controller' => __DIR__ . '/../..' . '/classes/controller.php',
         'classes\\Router' => __DIR__ . '/../..' . '/classes/router.php',
         'classes\\config' => __DIR__ . '/../..' . '/classes/config.php',
+        'classes\\controller\\IController' => __DIR__ . '/../..' . '/classes/interface/IController.php',
+        'controller\\ErrorController' => __DIR__ . '/../..' . '/controller/ErrorController.php',
+        'controller\\HomeController' => __DIR__ . '/../..' . '/controller/HomeController.php',
         'controller\\Test1Controller' => __DIR__ . '/../..' . '/controller/Test1Controller.php',
+        'controller\\Test2Controller' => __DIR__ . '/../..' . '/controller/Test2Controller.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

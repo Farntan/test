@@ -1,22 +1,22 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 use classes\Router;
-use controller\Test1Controller;
-use controller\HomeController;
+
 
 $router=new Router();
 $controllerName=$router->getController();
+$class="controller\\".$controllerName;
 
 
-if (class_exists($controllerName)) {
-    $controller=new $controllerName($router);
+
+if (class_exists($class)) {
+    $controller=new $class($router);
 } else {
-    trigger_error('class ' . $controllerName . ' not found', E_USER_ERROR);
+    $controller=new \ErrorController($router);
 }
-
-$controller=new $controllerName($router);
-$controller=new Test1Controller($router);
-$controller->getView();
+$content='Welcome!';
+$controller->setContent($content);
+$controller->getView('');
 
 
 

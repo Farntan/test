@@ -5,13 +5,20 @@
             "classes/config.php",
             "classes/router.php",
             "classes/controller.php",
-            "controller/Test1Controller.php"
+            "classes/interface/IController.php",
+            "controller/ErrorController.php",
+            "controller/Test2Controller.php",
+            "controller/Test1Controller.php",
+            "controller/HomeController.php"
+
+
+
 
 
         ],
 
         "psr-4": {
-            "App\\": "app/"
+            "controller\\\\": "controller/"
 
         }
     },

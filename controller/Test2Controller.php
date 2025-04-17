@@ -5,7 +5,7 @@ namespace controller;
 use classes\Controller;
 use classes\Router;
 
-class Test1Controller extends Controller
+class Test2Controller extends Controller
 {
 
     public function setContent($content)

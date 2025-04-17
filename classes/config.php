@@ -2,6 +2,8 @@
 
 namespace classes;
 
+use controller\ErrorController;
+
 class config
 {
     private  $config;
@@ -19,6 +21,7 @@ class config
 
 
         if (isset($this->config[$name])) return $this->config[$name];
+
         trigger_error('config with name ' . $name . ' not found', E_USER_ERROR);
     }
 

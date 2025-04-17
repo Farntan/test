@@ -16,12 +16,17 @@ class Router
 
     public function getRoute (){
 
-        if (isset($this->routes[$this->uri])) {
+        if ($this->routes[$this->uri]) {
             $route=$this->routes[$this->uri];
+
+
         }else{
             $uri='/error';
+
             $route=$this->routes[$uri];
+
         }
+
         return $route;
 
     }

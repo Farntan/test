@@ -15,7 +15,7 @@ return [
     ],
     '/error'=>[
         'name'=>'Error',
-        'controller'=>'Test3Controller'
+        'controller'=>'ErrorController'
     ],
 
 ];
