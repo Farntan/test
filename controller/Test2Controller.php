@@ -3,7 +3,7 @@
 namespace controller;
 
 use classes\Controller;
-use classes\Router;
+
 
 class Test2Controller extends Controller
 {

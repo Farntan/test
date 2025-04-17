@@ -6,8 +6,12 @@ use controller\ErrorController;
 
 class Router
 {
-    public $route;
-    public $routes;
+
+    public array $routes;
+    /**
+     * @var mixed
+     */
+    private $uri;
 
     public function __construct()
     {
@@ -16,29 +20,23 @@ class Router
 
     }
 
-    public function getRoute (){
+    public function getRoute () :array {
 
         if ($this->uri==='/') {
             return $this->routes['/home'];
         }
         if (isset($this->routes[$this->uri])) {
             $route=$this->routes[$this->uri];
-
-
         }else{
             $uri='/error';
-
             $route=$this->routes[$uri];
-
         }
-
         return $route;
 
     }
-    public function getControllerName ()
+    public function getControllerName () :string
     {
         $route=$this->getRoute();
-
         return $route['controller'];
 
     }

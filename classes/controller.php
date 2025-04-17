@@ -15,7 +15,7 @@ class Controller implements IController
             $this->router=$router;
         }
 
-    public function getView()
+    public function getView() :void
     {
         $routes=$this->router->routes;
         $content=$this->content;
@@ -28,7 +28,7 @@ class Controller implements IController
 
         require_once('./view/footer.php');
     }
-    public function setContent($content)
+    public function setContent(string $content)
     {
         $this->content=$content;
     }

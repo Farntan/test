@@ -2,7 +2,7 @@
 
 namespace classes;
 
-use controller\ErrorController;
+
 
 class config
 {
@@ -18,7 +18,6 @@ class config
      * @return string
      */
     public function get(string $name) :string   {
-
 
         if (isset($this->config[$name])) return $this->config[$name];
 
