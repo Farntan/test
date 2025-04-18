@@ -28,7 +28,7 @@ class Controller implements IController
         require_once('./view/footer.php');
         exit();
     }
-    public function setContent(string $string) :void
+    public function setContent(string $string=null) :void
     {
         $this->content=$string;
     }

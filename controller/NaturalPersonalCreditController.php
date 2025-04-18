@@ -24,7 +24,7 @@ class NaturalPersonalCreditController extends Controller
 
 
 
-    public function setContent($content) :void
+    public function setContent($string=null) :void
     {
 
         $this->content= include('./view/reports/form_natural_person_credit.php');
