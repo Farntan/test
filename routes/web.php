@@ -6,9 +6,9 @@ return [
         'controller'=>'HomeController'
     ],
 
-    '/test1'=>[
-        'name'=>'Test №1',
-        'controller'=>'Test1Controller'
+    '/physicalperson/credit'=>[
+        'name'=>'Заявка на кредит (физическое лицо)',
+        'controller'=>'NaturalPersonalCreditController'
     ],
     '/test2'=>[
         'name'=>'Test №2',

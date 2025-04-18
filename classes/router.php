@@ -22,6 +22,7 @@ class Router
 
     public function getRoute () :array {
 
+        print_r($this->uri);
         if ($this->uri==='/') {
             return $this->routes['/home'];
         }
