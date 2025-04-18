@@ -1,17 +1,22 @@
 <?php
 
 $button= include('button_send.php');
-$surname=include('input_surname.php');
-$name=include('input_name.php');
-$data_birth=include('input_date_birth.php');
+$natural_person=include('natural_person.php');
+
+$product=include('./view/reports/credit/product.php');
 
 $form= "
 <form action='/index.php' method='post'>      
        
-        $surname
-        $name
-        $data_birth
+        $natural_person
+        
+        $product
+        
+        
+        
         $button
+        
+        
 </form>";
 
 return $form;

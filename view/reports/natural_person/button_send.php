@@ -1,6 +1,6 @@
 <?php
 
 return "
-<input class='btn btn-secondary' type='submit' value='Отправить'>
+<input class='btn btn-secondary mt-2' type='submit' value='Отправить'>
 
 ";

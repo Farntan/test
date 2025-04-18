@@ -8,7 +8,13 @@ return [
 
     '/physicalperson/credit'=>[
         'name'=>'Заявка на кредит (физическое лицо)',
-        'controller'=>'NaturalPersonalCreditController'
+        'controller'=>'NaturalPersonalCreditController',
+        'method'=>'getView'
+    ],
+    '/physicalperson/credit/create'=>[
+        'name'=>'Создание продукта',
+        'controller'=>'NaturalPersonalCreditController',
+        'method'=>'create'
     ],
     '/test2'=>[
         'name'=>'Test №2',
