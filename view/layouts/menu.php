@@ -1,7 +1,7 @@
 <?php
 
 use classes\Router;
-
+use classes\Connect;
 $router = new Router();
 
 $nameCurrentUri=$this->router->getRoute()['name'];
@@ -16,6 +16,12 @@ $routes = [
         'controller'=>'NaturalPersonalCreditController',
         'method'=>'create'
     ],
+    '/errorDB/status'=>[
+        'name'=>'Статус базы данных',
+        'controller'=>'ErrorDBController',
+        'method'=>'status'
+    ],
+
 ];
 foreach ($routes as $uri => $route) {
 
@@ -28,13 +34,21 @@ foreach ($routes as $uri => $route) {
  </li>";
 }
 
+
+
+
+
 return '
 <nav class="navbar navbar-expand-lg navbar-light bg-light text-center">
   
     
     
       <ul class="navbar-nav">
-        ' . $list . '
+        ' . $list.  '
+       
       </ul>
+      
+      
+      
   
 </nav>';

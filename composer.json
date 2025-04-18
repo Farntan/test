@@ -6,6 +6,7 @@
             "classes/router.php",
             "classes/controller.php",
             "classes/client.php",
+            "classes/connect.php",
             "classes/model.php",
             "classes/interface/IController.php",
             "classes/interface/IClient.php",

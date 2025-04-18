@@ -21,11 +21,11 @@ class ErrorDBController extends Controller
             $config->get('charset'));
         var_dump($model->getStatus());
         if ($model->getStatus()) {
-            $this->setContent('Есть соединение');
+            $this->setContent('<h3 class="text-success">Есть соединение</h3>');
             $this->getView();
         }
 
-        $this->setContent('Нет соединения');
+        $this->setContent('<h3 class="text-warning">Нет соединения</h3>');
         $this->getView();
 
     }

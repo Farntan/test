@@ -3,9 +3,7 @@
 namespace classes;
 use mysqli;
 use mysqli_sql_exception;
-
-
-class Model
+class Connect
 {
     private $connect;
 
@@ -54,15 +52,9 @@ class Model
 
         }
     }
-        public function getStatus () {
-            return $this->connect->ping();
-        }
-
-
-
-
-
-
+    public function getStatus () {
+        return $this->connect->ping();
+    }
 
 
 }
