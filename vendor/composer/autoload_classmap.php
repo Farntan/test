@@ -638,6 +638,7 @@ return array(
     'TheSeer\\Tokenizer\\XMLSerializer' => $vendorDir . '/theseer/tokenizer/src/XMLSerializer.php',
     'classes\\Client' => $baseDir . '/classes/client.php',
     'classes\\Controller' => $baseDir . '/classes/controller.php',
+    'classes\\Model' => $baseDir . '/classes/model.php',
     'classes\\Router' => $baseDir . '/classes/router.php',
     'classes\\config' => $baseDir . '/classes/config.php',
     'classes\\controller\\IClient' => $baseDir . '/classes/interface/IClient.php',
