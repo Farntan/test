@@ -3,9 +3,20 @@
 use classes\Router;
 
 $router = new Router();
-$routes = $this->router->routes;
+
 $nameCurrentUri=$this->router->getRoute()['name'];
-$list = '';
+$routes = [
+    '/home'=>[
+        'name'=>'Заявки',
+        'controller'=>'HomeController',
+        'method'=>'index'
+    ],
+    '/physicalperson/credit/create'=>[
+        'name'=>'Заявка на кредит (физическое лицо)',
+        'controller'=>'NaturalPersonalCreditController',
+        'method'=>'create'
+    ],
+];
 foreach ($routes as $uri => $route) {
 
     $name = $route['name'];
@@ -13,7 +24,7 @@ foreach ($routes as $uri => $route) {
     if ($name===$nameCurrentUri) $disabled='disabled';
 
     if ($name != 'Error') $list .= " <li class='nav-item'>
-<li><a class='nav-link $disabled' href='$uri' target='_blank' >$name</a></li>
+<li><a class='nav-link $disabled text-uppercase' href='$uri' target='_blank' >$name</a></li>
  </li>";
 }
 

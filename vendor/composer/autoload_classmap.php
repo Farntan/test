@@ -636,8 +636,10 @@ return array(
     'TheSeer\\Tokenizer\\TokenCollectionException' => $vendorDir . '/theseer/tokenizer/src/TokenCollectionException.php',
     'TheSeer\\Tokenizer\\Tokenizer' => $vendorDir . '/theseer/tokenizer/src/Tokenizer.php',
     'TheSeer\\Tokenizer\\XMLSerializer' => $vendorDir . '/theseer/tokenizer/src/XMLSerializer.php',
+    'classes\\Client' => $baseDir . '/classes/client.php',
     'classes\\Controller' => $baseDir . '/classes/controller.php',
     'classes\\Router' => $baseDir . '/classes/router.php',
     'classes\\config' => $baseDir . '/classes/config.php',
+    'classes\\controller\\IClient' => $baseDir . '/classes/interface/IClient.php',
     'classes\\controller\\IController' => $baseDir . '/classes/interface/IController.php',
 );

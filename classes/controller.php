@@ -25,13 +25,12 @@ class Controller implements IController
         $title=$nameCurrentUri;
 
         require_once('./view/body.php');
-
         require_once('./view/footer.php');
         exit();
     }
-    public function setContent(string $content)
+    public function setContent(string $string) :void
     {
-        $this->content=$content;
+        $this->content=$string;
     }
 
 

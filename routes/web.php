@@ -2,8 +2,9 @@
 return [
 
     '/home'=>[
-        'name'=>'Home',
-        'controller'=>'HomeController'
+        'name'=>'Заявки',
+        'controller'=>'HomeController',
+        'method'=>'index'
     ],
 
     '/physicalperson/credit/create'=>[
@@ -14,7 +15,7 @@ return [
     '/physicalperson/credit/store'=>[
         'name'=>'Создание продукта',
         'controller'=>'NaturalPersonalCreditController',
-        'method'=>'create'
+        'method'=>'store'
     ],
     '/test2'=>[
         'name'=>'Test №2',

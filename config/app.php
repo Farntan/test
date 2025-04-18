@@ -1,5 +1,5 @@
 <?php
 return [
-    'name'=>'Test',
+    'name'=>'Заявки на банковские продукты',
     'author'=>'Farn',
 ];

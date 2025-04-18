@@ -6,11 +6,14 @@ use classes\Controller;
 
 class HomeController extends Controller
 {
-
-    public function setContent($content)
-    {
-       $this->content='First page project';
+    public function index () {
+        $string= include('./view/home/home.php');
+        $this->setContent($string);
+        $this->getView();
     }
+
+
+
 
 
 }
