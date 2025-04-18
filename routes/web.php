@@ -6,12 +6,12 @@ return [
         'controller'=>'HomeController'
     ],
 
-    '/physicalperson/credit'=>[
+    '/physicalperson/credit/create'=>[
         'name'=>'Заявка на кредит (физическое лицо)',
         'controller'=>'NaturalPersonalCreditController',
-        'method'=>'getView'
+        'method'=>'create'
     ],
-    '/physicalperson/credit/create'=>[
+    '/physicalperson/credit/store'=>[
         'name'=>'Создание продукта',
         'controller'=>'NaturalPersonalCreditController',
         'method'=>'create'
@@ -30,7 +30,8 @@ return [
     ],
     '/error'=>[
         'name'=>'Error',
-        'controller'=>'ErrorController'
+        'controller'=>'ErrorController',
+        'method'=>'index'
     ],
 
 ];

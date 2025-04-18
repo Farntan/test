@@ -3,6 +3,7 @@
 namespace classes;
 
 use controller\ErrorController;
+use controller\HomeController;
 
 class Router
 {
@@ -17,16 +18,26 @@ class Router
     {
         $this->routes = include "./routes/web.php";
         $this->uri = $_SERVER['REQUEST_URI'];
+    }
+
+    public function hasRoute () :bool {
+
+        if (isset($this->routes[$this->uri])) {
+            return true;
+        }else{
+            return false;
+        }
+
 
     }
 
     public function getRoute () :array {
 
-        print_r($this->uri);
+
         if ($this->uri==='/') {
             return $this->routes['/home'];
         }
-        if (isset($this->routes[$this->uri])) {
+        if ($this->hasRoute()) {
             $route=$this->routes[$this->uri];
         }else{
             $uri='/error';
@@ -38,8 +49,15 @@ class Router
     public function getControllerName () :string
     {
         $route=$this->getRoute();
+        var_dump($route);
         return $route['controller'];
 
+    }
+    public function getControllerMethodName ()
+    {
+        $route=$this->getRoute();
+
+        return $route['method'];
     }
 
     public function getController () :Controller
@@ -54,7 +72,28 @@ class Router
         return $controller;
 
     }
+    public function getControllerMethod ()
+    {
+        $controller=$this->getController();
 
+        $method=$this->getControllerMethodName();
+
+        if (($method) and ($this->hasRoute())) return $controller->$method();
+        if (!$method) {
+            $newController=new ErrorController($this);
+            $newController->setContent('Данная функция не реализована');
+            $newController->getView();
+        }
+
+        $newController=new ErrorController($this);
+        $newController->setContent('Данная страница отсутствует');
+        $newController->getView();
+
+
+
+
+
+    }
 
 
 }

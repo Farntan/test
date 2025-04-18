@@ -27,6 +27,7 @@ class Controller implements IController
         require_once('./view/body.php');
 
         require_once('./view/footer.php');
+        exit();
     }
     public function setContent(string $content)
     {
