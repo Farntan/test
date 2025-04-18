@@ -35,10 +35,12 @@ class Connect
     {
         mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
         try {
+
             $db = new mysqli($host, $user, $pass, $db, $port);
             $db->set_charset($charset);
             $db->options(MYSQLI_OPT_INT_AND_FLOAT_NATIVE, 1);
             $this->connect = $db;
+
         } catch (mysqli_sql_exception $e) {
             $domain = $_SERVER['HTTP_HOST'];
             $url = 'https://' . $domain . '/errorDB';
@@ -54,6 +56,10 @@ class Connect
     }
     public function getStatus () {
         return $this->connect->ping();
+    }
+
+    public function getConnect () {
+        return $this->connect;
     }
 
 

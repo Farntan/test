@@ -3,66 +3,32 @@
 namespace classes;
 use mysqli;
 use mysqli_sql_exception;
+use classes\Connect;
 
 
 class Model
 {
-    private $connect;
-
-    private static $_instance = null;
-
-    private function __construct() {
-
-    }
-
-    protected function __clone() {
-
-    }
-
-    static public function getInstance() {
-
-        if(is_null(self::$_instance))
-
-        {
-
-            self::$_instance = new self();
-
-        }
-
-        return self::$_instance;
-
-    }
-
-    public function connect ($host, $user, $pass, $db, $port,$charset)
+    public object $connection;
+    public object $result;
+    public function __construct()
     {
-        mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-        try {
-            $db = new mysqli($host, $user, $pass, $db, $port);
-            $db->set_charset($charset);
-            $db->options(MYSQLI_OPT_INT_AND_FLOAT_NATIVE, 1);
-            $this->connect = $db;
-        } catch (mysqli_sql_exception $e) {
-            $domain = $_SERVER['HTTP_HOST'];
-            $url = 'https://' . $domain . '/errorDB';
-            $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-            if ($url != $actual_link) {
-
-                header('Location: https://' . $domain . '/errorDB');
-                exit();
-            };
-
-
-        }
+        $this->connection=Connect::getInstance()->getConnect();
     }
-        public function getStatus () {
-            return $this->connect->ping();
-        }
 
+    public function insert ($sql) {
+        /*$stmt = $db->prepare("INSERT INTO users (email, password) VALUES (?,?)");
+        $stmt->bind_param("ss", $email, $password_hash);
+        $stmt->execute();*/
+    }
 
+    public function select (string $sql, array $variables, string $typeVariables) {
 
+        $stmt = $this->connection->prepare("$sql");
+        if ($variables and $typeVariables) $stmt->bind_param($typeVariables, implode(',', $variables));
+        $stmt->execute();
+        $this->result=$stmt->get_result();
 
-
-
+    }
 
 
 }
