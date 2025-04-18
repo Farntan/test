@@ -26,5 +26,15 @@ return [
         'name'=>'Error',
         'controller'=>'ErrorController'
     ],
+    '/errorDB'=>[
+        'name'=>'ErrorDB',
+        'controller'=>'ErrorDBController',
+        'method'=>'index'
+    ],
+    '/errorDB/status'=>[
+        'name'=>'DBStatus',
+        'controller'=>'ErrorDBController',
+        'method'=>'status'
+    ],
 
 ];

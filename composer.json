@@ -5,6 +5,7 @@
             "classes/config.php",
             "classes/router.php",
             "classes/controller.php",
+            "classes/model.php",
             "classes/interface/IController.php"
 
 
@@ -21,9 +22,10 @@
         }
     },
     "require": {
-        "php": "^7.4"
+            "php": "^7.4",
+          "ext-mysqli": "*"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.6.22"
+            "phpunit/phpunit": "^9.6.22"
     }
 }
