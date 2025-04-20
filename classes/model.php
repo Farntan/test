@@ -19,6 +19,7 @@ class Model
         /*$stmt = $db->prepare("INSERT INTO users (email, password) VALUES (?,?)");
         $stmt->bind_param("ss", $email, $password_hash);
         $stmt->execute();*/
+
     }
 
     public function select (string $sql, array $variables, string $typeVariables) {

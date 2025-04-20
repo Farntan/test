@@ -8,7 +8,6 @@ class config
 {
 
 
-
     private  $config;
     public function __construct()
     {
