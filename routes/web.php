@@ -17,6 +17,11 @@ return [
         'controller'=>'NaturalPersonalCreditController',
         'method'=>'store'
     ],
+    '/physicalperson/credit/index'=>[
+        'name'=>'Список заявок на кредит',
+        'controller'=>'NaturalPersonalCreditController',
+        'method'=>'index'
+    ],
 
     '/error'=>[
         'name'=>'Error',

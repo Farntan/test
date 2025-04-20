@@ -56,5 +56,10 @@ class Connection implements IConnection
         return $this->connection;
     }
 
+    public function disconnect ()
+    {
+        mysqli_close($this->connection);
+    }
+
 
 }

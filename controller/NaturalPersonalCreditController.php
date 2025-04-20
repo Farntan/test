@@ -5,6 +5,7 @@ namespace controller;
 use classes\Connection;
 use classes\Controller;
 use classes\Model;
+use classes\Redirect;
 use classes\Request;
 use classes\Router;
 use Exception;
@@ -19,6 +20,31 @@ class NaturalPersonalCreditController extends Controller
         parent::__construct($router);
     }
 
+    public function index () {
+        $model=new Model(Connection::getInstance());
+        try {
+            $type_client = $model->select("SELECT * FROM `clients` as c INNER JOIN client_type AS cs ON c.client_type_id = cs.id
+                                                                       INNER JOIN credit AS cr ON c.id = cr.client_id
+                                                                       INNER JOIN natural_person AS np ON c.id = np.client_id
+                                                                       INNER JOIN user AS u ON np.user_id = u.id
+                                                                       ");
+
+            $applications=$model->get('object');
+
+
+
+        }catch (Exception $e) {
+
+            var_dump($model);
+            Redirect::View('/errorDB');
+
+        }
+        Connection::getInstance()->disconnect();
+
+
+
+
+    }
     public function create () {
 
         $this->content= include('./view/reports/form_natural_person_credit.php');
@@ -29,7 +55,6 @@ class NaturalPersonalCreditController extends Controller
         $request=new Request();
 
         $model=new Model(Connection::getInstance());
-      //  var_dump($request);
 
         $inn=$request->all['inn'];
         $surname=$request->all['surname'];
@@ -39,14 +64,10 @@ class NaturalPersonalCreditController extends Controller
         $passport_series=$request->all['series'];
         $passport_number=$request->all['number'];
         $passport_data=$request->all['date_issue'];
-
         $open=$request->all['date_open'];
         $close=$request->all['date_close'];
         $chart_type_id=$request->all['payment_schedule'];
         $amount=$request->all['deposit_amount'];
-
-
-
         try {
             $model->connection->begin_transaction();
 
@@ -70,28 +91,17 @@ class NaturalPersonalCreditController extends Controller
             $credit=$model->insert ("INSERT INTO `credit`(`client_id`,`open`, `close`, `chart_type_id`, `amount`) VALUES (?,?,?,?,?)",[$client_id,$open,$close,$chart_type_id,$amount]);
 
 
-
-
-
             $model->connection->commit();
         } catch (Exception $e) {
-            var_dump($e);
             $model->connection->rollBack();
-            //TODO to Error
+            Redirect::View('/errorDB');
+
         }
-     //   var_dump($model->get('object'));
-
-
-       /* $model->select("SELECT * FROM `chart_type` WHERE 1",);
-        var_dump($model->get('object'));
-        while ($element = $model->get('object')) {
-            var_dump($element);
-        }*/
-
-
+        Connection::getInstance()->disconnect();
 
 
     }
+
 
 
 
