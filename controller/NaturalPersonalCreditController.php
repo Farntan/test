@@ -4,7 +4,10 @@ namespace controller;
 
 use classes\Connection;
 use classes\Controller;
+use classes\CreditProduct;
 use classes\Model;
+use classes\NaturalPerson;
+use classes\NaturalPersonCreditApplication;
 use classes\Redirect;
 use classes\Request;
 use classes\Router;
@@ -55,50 +58,14 @@ class NaturalPersonalCreditController extends Controller
 
     public function store () {
         $request=new Request();
+        $naturalPerson=new NaturalPerson($request->all['surname'],$request->all['name'],$request->all['patronymic'],$request->all['inn'],
+            $request->all['data_birth'],$request->all['series'],$request->all['number'],$request->all['date_issue']);
+        $creditProduct=new CreditProduct($request->all['date_open'],$request->all['date_close'],$request->all['deposit_amount'],$request->all['payment_schedule']);
+        $naturalPersonCreditApplication=new NaturalPersonCreditApplication($naturalPerson,$creditProduct);
 
-        $model=new Model(Connection::getInstance());
+        if ($naturalPersonCreditApplication->save())  Redirect::View('/physicalperson/credit/index');
 
-        $inn=$request->all['inn'];
-        $surname=$request->all['surname'];
-        $name=$request->all['name'];
-        $middle_name=$request->all['patronymic'];
-        $date_birth=$request->all['data_birth'];
-        $passport_series=$request->all['series'];
-        $passport_number=$request->all['number'];
-        $passport_data=$request->all['date_issue'];
-        $open=$request->all['date_open'];
-        $close=$request->all['date_close'];
-        $chart_type_id=$request->all['payment_schedule'];
-        $amount=$request->all['deposit_amount'];
-        try {
-            $model->connection->begin_transaction();
-
-            $type_client=$model->select ("SELECT * FROM `client_type` WHERE name=?",[$this->client_type]);
-            $type_client_id=$model->get('object')->id;
-
-            $client=$model->insert ("INSERT INTO `clients`(`client_type_id`) VALUES (?)",[$type_client_id]);
-            $client_id=$model->connection->insert_id;
-            $model->select ("SELECT * FROM `user` WHERE inn=?",[$inn]);
-            $user=$model->get('object');
-
-            if ($user->id) {
-                $user_id = $user->id;
-            }else{
-                $result=$model->insert ("INSERT INTO `user`(`surname`, `name`, `middle_name`, `inn`, `date_birth`, `passport_series`, `passport_number`, `passport_data`) VALUES 
-                                                        (?,?,?,?,?,?,?,?)",[$surname,$name,$middle_name,$inn,$date_birth,$passport_series, $passport_number, $passport_data]);
-                $user_id=$model->connection->insert_id;
-            }
-            $client=$model->insert ("INSERT INTO `natural_person`(`client_id`, `user_id`) VALUES (?,?)",[$client_id,$user_id]);
-            $credit=$model->insert ("INSERT INTO `credit`(`client_id`,`open`, `close`, `chart_type_id`, `amount`) VALUES (?,?,?,?,?)",[$client_id,$open,$close,$chart_type_id,$amount]);
-
-            $model->connection->commit();
-        } catch (Exception $e) {
-            $model->connection->rollBack();
-            Redirect::View('/errorDB');
-
-        }
-        Connection::getInstance()->disconnect();
-        Redirect::View('/physicalperson/credit/index');
+        Redirect::View('/errorDB');
 
     }
 

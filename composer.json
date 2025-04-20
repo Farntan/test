@@ -10,6 +10,9 @@
             "classes/model.php",
             "classes/redirect.php",
             "classes/request.php",
+            "classes/natural_person.php",
+            "classes/credit_product.php",
+            "classes/natural_person_credit_application.php",
             "classes/interface/IController.php",
             "classes/interface/IClient.php",
             "classes/interface/IConnection.php"

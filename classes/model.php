@@ -32,7 +32,8 @@ class Model
             $stmt->execute();
             return $stmt->get_result();
         } catch (Exception $e) {
-            Redirect::View('/errorDB');
+            var_dump($e);
+          //  Redirect::View('/errorDB');
             return false;
         }
 
@@ -52,7 +53,7 @@ class Model
             return true;
         } catch (Exception $e) {
             var_dump($e);
-            Redirect::View('/errorDB');
+          //  Redirect::View('/errorDB');
             return false;
         }
 
