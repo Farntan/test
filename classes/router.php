@@ -33,17 +33,15 @@ class Router
 
     public function getRoute () :array {
 
+        switch ($this->uri) {
+            case '/':
+                return $this->routes['/home'];
+            case $this->hasRoute():
+                return  $this->routes[$this->uri];
+            default:
+                return $this->routes['/error'];
 
-        if ($this->uri==='/') {
-            return $this->routes['/home'];
         }
-        if ($this->hasRoute()) {
-            $route=$this->routes[$this->uri];
-        }else{
-            $uri='/error';
-            $route=$this->routes[$uri];
-        }
-        return $route;
 
     }
     public function getControllerName () :string

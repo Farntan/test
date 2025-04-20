@@ -1,13 +1,15 @@
 <?php
 
 namespace classes;
+use classes\controller\IConnection;
 use mysqli;
 use mysqli_sql_exception;
-class Connect
+use classes\Redirect;
+class Connection implements IConnection
 {
-    private $connect;
+    private object $connection;
 
-    private static $_instance = null;
+    private static ?object $_instance = null;
 
     private function __construct() {
 
@@ -17,16 +19,12 @@ class Connect
 
     }
 
-    static public function getInstance() {
+    static public function getInstance() :Connection{
 
         if(is_null(self::$_instance))
-
         {
-
             self::$_instance = new self();
-
         }
-
         return self::$_instance;
 
     }
@@ -39,27 +37,23 @@ class Connect
             $db = new mysqli($host, $user, $pass, $db, $port);
             $db->set_charset($charset);
             $db->options(MYSQLI_OPT_INT_AND_FLOAT_NATIVE, 1);
-            $this->connect = $db;
+            $this->connection = $db;
 
         } catch (mysqli_sql_exception $e) {
-            $domain = $_SERVER['HTTP_HOST'];
-            $url = 'https://' . $domain . '/errorDB';
-            $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-            if ($url != $actual_link) {
 
-                header('Location: https://' . $domain . '/errorDB');
-                exit();
-            };
+            Redirect::View('/errorDB');
+
 
 
         }
     }
     public function getStatus () {
-        return $this->connect->ping();
+        return $this->connection->ping();
     }
 
-    public function getConnect () {
-        return $this->connect;
+    public function getConnect () :object
+    {
+        return $this->connection;
     }
 
 

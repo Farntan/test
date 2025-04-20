@@ -678,12 +678,15 @@ class ComposerStaticInit5c0677f153235d6c4464beb866c2bf11
         'TheSeer\\Tokenizer\\Tokenizer' => __DIR__ . '/..' . '/theseer/tokenizer/src/Tokenizer.php',
         'TheSeer\\Tokenizer\\XMLSerializer' => __DIR__ . '/..' . '/theseer/tokenizer/src/XMLSerializer.php',
         'classes\\Client' => __DIR__ . '/../..' . '/classes/client.php',
-        'classes\\Connect' => __DIR__ . '/../..' . '/classes/connect.php',
+        'classes\\Connection' => __DIR__ . '/../..' . '/classes/connection.php',
         'classes\\Controller' => __DIR__ . '/../..' . '/classes/controller.php',
         'classes\\Model' => __DIR__ . '/../..' . '/classes/model.php',
+        'classes\\Redirect' => __DIR__ . '/../..' . '/classes/redirect.php',
+        'classes\\Request' => __DIR__ . '/../..' . '/classes/request.php',
         'classes\\Router' => __DIR__ . '/../..' . '/classes/router.php',
         'classes\\config' => __DIR__ . '/../..' . '/classes/config.php',
         'classes\\controller\\IClient' => __DIR__ . '/../..' . '/classes/interface/IClient.php',
+        'classes\\controller\\IConnection' => __DIR__ . '/../..' . '/classes/interface/IConnection.php',
         'classes\\controller\\IController' => __DIR__ . '/../..' . '/classes/interface/IController.php',
     );
 

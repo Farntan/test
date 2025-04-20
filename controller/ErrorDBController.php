@@ -2,7 +2,7 @@
 
 namespace controller;
 use classes\Model;
-use classes\Connect;
+use classes\Connection;
 use classes\config;
 use classes\Controller;
 
@@ -13,7 +13,7 @@ class ErrorDBController extends Controller
     {
         $config = new config();
 
-        $connect=Connect::getInstance();
+        $connect=Connection::getInstance();
         $connect->connect($config->get('host'),
             $config->get('user'),
             $config->get('password'),

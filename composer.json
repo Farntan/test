@@ -6,11 +6,14 @@
             "classes/router.php",
             "classes/controller.php",
             "classes/client.php",
-            "classes/connect.php",
+            "classes/connection.php",
             "classes/model.php",
+            "classes/redirect.php",
+            "classes/request.php",
             "classes/interface/IController.php",
             "classes/interface/IClient.php",
-            "classes/interface/IController.php"
+            "classes/interface/IConnection.php"
+
 
 
 

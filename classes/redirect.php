@@ -8,7 +8,14 @@ class Redirect
 {
     public static function View (string $name)
     {
-        //TODO TEST
+        $domain = $_SERVER['HTTP_HOST'];
+        $url = 'https://' . $domain . $name;
+        $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        if ($url != $actual_link) {
+            header($url);
+            exit();
+        };
+
     }
 
 
