@@ -2,7 +2,7 @@
 
 namespace classes;
 
-use Couchbase\View;
+
 
 class Redirect
 {
@@ -12,10 +12,10 @@ class Redirect
         $url = 'https://' . $domain . $name;
         $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
-        if ($url != $actual_link) {
-            header("Location:".$url);
-            exit();
-        };
+        if ($url != $actual_link) header("Location:".$url);
+        exit();
+
+
 
     }
 

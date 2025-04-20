@@ -12,6 +12,8 @@ class Client implements IClient
     public function __construct()
     {
 
+
+
     }
 
 

@@ -20,13 +20,14 @@ $routes_natural_person = [
 ],
 
 ];
+$list='';
 foreach ($routes_natural_person as $uri => $route) {
 
     $name = $route['name'];
     $disabled='';
     if ($name===$nameCurrentUri) $disabled='disabled ';
 
-    if ($name != 'Error')  $list .= " <li class='dropdown-item'>
+    $list .= " <li class='dropdown-item'>
 <a class='dropdown-item $disabled text-uppercase' href='$uri' target='_blank' >$name</a>
  </li>";
 }
@@ -59,7 +60,6 @@ $db_status='
           <a class="nav-link '.$homeDisabled.'"  href="/errorDB/status">'.$this->router->getRouteByUri('/errorDB/status')['name'].'</a>
         </li>
 ';
-
 
 return '
 <nav class="navbar navbar-expand-lg navbar-light bg-light text-center">

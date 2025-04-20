@@ -4,9 +4,9 @@ namespace classes;
 
 use classes\controller\IConnection;
 use Exception;
-use mysqli;
-use mysqli_sql_exception;
-use classes\Connection;
+
+
+
 
 
 class Model

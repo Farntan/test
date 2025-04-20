@@ -4,7 +4,7 @@ namespace classes;
 use classes\controller\IConnection;
 use mysqli;
 use mysqli_sql_exception;
-use classes\Redirect;
+
 class Connection implements IConnection
 {
     private object $connection;
