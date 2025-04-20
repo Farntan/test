@@ -2,7 +2,7 @@
 return [
 
     '/home'=>[
-        'name'=>'Заявки',
+        'name'=>'Доступные заявки',
         'controller'=>'HomeController',
         'method'=>'index'
     ],

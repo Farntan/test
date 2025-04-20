@@ -20,9 +20,15 @@ class Router
         $this->uri = $_SERVER['REQUEST_URI'];
     }
 
-    public function hasRoute () :bool {
+    public function getUri () :string {
 
-        if (isset($this->routes[$this->uri])) {
+       return $this->uri;
+
+
+    }
+    public function hasRoute ($uri) :bool {
+
+        if (isset($this->routes[$uri])) {
             return true;
         }else{
             return false;
@@ -31,17 +37,25 @@ class Router
 
     }
 
-    public function getRoute () :array {
+    public function getRouteByUri (string $uri) :array {
 
-        switch ($this->uri) {
+        switch ($uri) {
             case '/':
+            case '':
                 return $this->routes['/home'];
-            case $this->hasRoute():
-                return  $this->routes[$this->uri];
+            case $this->hasRoute($uri):
+                return  $this->routes[$uri];
             default:
                 return $this->routes['/error'];
 
         }
+
+    }
+
+    public function getRoute () :array {
+
+        return $this->getRouteByUri($this->uri);
+
 
     }
     public function getControllerName () :string
@@ -65,6 +79,7 @@ class Router
         if (class_exists($class)) {
             $controller=new $class($this);
         } else {
+            Redirect::View('/error');
             $controller=new ErrorController($this);
         }
         return $controller;
@@ -76,7 +91,7 @@ class Router
 
         $method=$this->getControllerMethodName();
 
-        if (($method) and ($this->hasRoute()) and method_exists($controller,$method)) return $controller->$method();
+        if (($method) and ($this->hasRoute($this->uri)) and method_exists($controller,$method)) return $controller->$method();
         if (!$method) {
             $newController=new ErrorController($this);
             $newController->setContent('Данная функция не реализована');
@@ -90,20 +105,7 @@ class Router
 
     }
 
-    public function determineTypeClient() :string
-    {
 
-        $uri = $this->uri;
-        $physical_person='physicalperson';
-        $legal_entity='legalentity';
-        if (strpos($uri, $physical_person)) {
-            return $physical_person;
-        }
-        if (strpos($uri, $legal_entity)) {
-            return $legal_entity;
-        }
-        return 'no_name';
-    }
 
 
 }

@@ -17,19 +17,21 @@ class NaturalPersonalCreditController extends Controller
     public function __construct(Router $router)
     {
         $this->client_type='физическое лицо';
+        $this->client_type='физическое лицо';
         parent::__construct($router);
     }
 
     public function index () {
         $model=new Model(Connection::getInstance());
         try {
-            $type_client = $model->select("SELECT * FROM `clients` as c INNER JOIN client_type AS cs ON c.client_type_id = cs.id
+            $type_client = $model->select("SELECT u.surname,u.name,u.middle_name, cr.open, cr.close, cr.amount, ct.name AS chart_type  FROM `clients` as c INNER JOIN client_type AS cs ON c.client_type_id = cs.id
                                                                        INNER JOIN credit AS cr ON c.id = cr.client_id
                                                                        INNER JOIN natural_person AS np ON c.id = np.client_id
                                                                        INNER JOIN user AS u ON np.user_id = u.id
+                                                                       INNER JOIN chart_type AS ct ON cr.chart_type_id = ct.id 
                                                                        ");
+            $applications=$model;
 
-            $applications=$model->get('object');
 
 
 
@@ -41,8 +43,8 @@ class NaturalPersonalCreditController extends Controller
         }
         Connection::getInstance()->disconnect();
 
-
-
+        $this->content= include ('./view/applications/natural_person/credit/list.php');
+        $this->getView();
 
     }
     public function create () {
@@ -76,7 +78,6 @@ class NaturalPersonalCreditController extends Controller
 
             $client=$model->insert ("INSERT INTO `clients`(`client_type_id`) VALUES (?)",[$type_client_id]);
             $client_id=$model->connection->insert_id;
-            var_dump($client_id);
             $model->select ("SELECT * FROM `user` WHERE inn=?",[$inn]);
             $user=$model->get('object');
 
@@ -90,7 +91,6 @@ class NaturalPersonalCreditController extends Controller
             $client=$model->insert ("INSERT INTO `natural_person`(`client_id`, `user_id`) VALUES (?,?)",[$client_id,$user_id]);
             $credit=$model->insert ("INSERT INTO `credit`(`client_id`,`open`, `close`, `chart_type_id`, `amount`) VALUES (?,?,?,?,?)",[$client_id,$open,$close,$chart_type_id,$amount]);
 
-
             $model->connection->commit();
         } catch (Exception $e) {
             $model->connection->rollBack();
@@ -98,7 +98,7 @@ class NaturalPersonalCreditController extends Controller
 
         }
         Connection::getInstance()->disconnect();
-
+        Redirect::View('/physicalperson/credit/index');
 
     }
 

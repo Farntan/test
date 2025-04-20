@@ -41,7 +41,6 @@ class Model
 
     public function select(string $sql, ?array $variables = []): bool
     {
-
         try {
             $stmt = $this->connection->prepare($sql);
             if (count($variables)) {

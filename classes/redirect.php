@@ -11,8 +11,9 @@ class Redirect
         $domain = $_SERVER['HTTP_HOST'];
         $url = 'https://' . $domain . $name;
         $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
         if ($url != $actual_link) {
-            header($url);
+            header("Location:".$url);
             exit();
         };
 
