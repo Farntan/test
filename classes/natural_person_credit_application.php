@@ -63,7 +63,7 @@ class NaturalPersonCreditApplication
            return false;
 
         }
-        Connection::getInstance()->disconnect();
+
 
     }
 }
