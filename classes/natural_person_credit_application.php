@@ -57,11 +57,13 @@ class NaturalPersonCreditApplication
             $model->insert ("INSERT INTO `credit`(`client_id`,`open`, `close`, `chart_type_id`, `amount`) VALUES (?,?,?,?,?)",[$client_id,$open,$close,$chart_type_id,$amount]);
 
             $model->connection->commit();
+            $model->connection->disconnect();
             return true;
         } catch (Exception $e) {
-            var_dump($e);
+
             $model->connection->rollBack();
-           return false;
+            $model->connection->disconnect();
+            return false;
 
         }
 

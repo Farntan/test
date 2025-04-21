@@ -2,8 +2,6 @@
 
 namespace classes;
 use classes\controller\IConnection;
-use Exception;
-use mysqli;
 use mysqli_sql_exception;
 
 class Connection implements IConnection
@@ -39,7 +37,7 @@ class Connection implements IConnection
             $db->set_charset($charset);
             $db->options(MYSQLI_OPT_INT_AND_FLOAT_NATIVE, 1);
             $this->connection = $db;
-            var_dump($this->connection);
+
             return true;
         } catch (mysqli_sql_exception  $e) {
             return false;
@@ -55,15 +53,15 @@ class Connection implements IConnection
         return false;
     }
 
-    public function getConnect () :object
+    public function getConnect ()
     {
         if  ($this->connection) return $this->connection;
-        return Redirect::View('/errorDB/status');
+        Redirect::View('/errorDB/status');
     }
 
     public function disconnect ()
     {
-        mysqli_close($this->connection);
+        if ($this->connection) mysqli_close($this->connection);
     }
 
 
