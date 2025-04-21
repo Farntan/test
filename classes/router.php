@@ -85,7 +85,7 @@ class Router
         return $controller;
 
     }
-    public function getControllerMethod ()
+    public function makeControllerMethod ()
     {
         $controller=$this->getController();
 

@@ -18,7 +18,7 @@ $model->connect($config->get('host'),
                 $config->get('port'),
                 $config->get('charset'));
 $router=new Router();
-$controller=$router->getControllerMethod();
+$controller=$router->makeControllerMethod();
 
 
 
