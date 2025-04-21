@@ -10,7 +10,7 @@ class ErrorController extends Controller
     public function index ()
     {
 
-        $this->setContent('Данная страница отсутствует');
+        $this->setContent('Страница отсутствует');
 
     }
 

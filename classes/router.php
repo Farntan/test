@@ -94,13 +94,12 @@ class Router
         if (($method) and ($this->hasRoute($this->uri)) and method_exists($controller,$method)) return $controller->$method();
         if (!$method) {
             $newController=new ErrorController($this);
-            $newController->setContent('Данная функция не реализована');
-            $newController->getView();
+            return $newController->index();
+
         }
 
         $newController=new ErrorController($this);
-        $newController->setContent('Данная страница отсутствует');
-        $newController->getView();
+        return $newController->index();
 
 
     }
