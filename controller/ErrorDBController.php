@@ -10,7 +10,7 @@ use classes\Controller;
 class ErrorDBController extends Controller
 {
 
-    
+
 
     public function status () :void
     {
@@ -30,7 +30,17 @@ class ErrorDBController extends Controller
             $this->getView();
         }
 
-        $this->setContent('<h3 class="text-warning">Нет соединения</h3>');
+        $this->setContent('<h3 class="text-warning">Нет соединения</h3>
+                                    <p class="fw-bold">Действия:</p>
+                                    <ol> 
+                                        <li>Проверте настройки базы данных - config/app.php</li>
+                                        <li>Используете дамп базы данных в корне проекта</li>
+                                    
+                                    </ol>
+                                    
+
+
+                                ');
         $this->getView();
 
     }
