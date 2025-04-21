@@ -22,6 +22,11 @@ return [
         'controller'=>'NaturalPersonalCreditController',
         'method'=>'index'
     ],
+    '/physicalperson/deposit/create'=>[
+        'name'=>'Заявка на вклад (физическое лицо)',
+        'controller'=>'NaturalPersonalDepositController',
+        'method'=>'create'
+    ],
 
     '/error'=>[
         'name'=>'Error',

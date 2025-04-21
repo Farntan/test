@@ -91,6 +91,8 @@ class Router
 
         $method=$this->getControllerMethodName();
 
+
+
         if (($method) and ($this->hasRoute($this->uri)) and method_exists($controller,$method)) return $controller->$method();
 
         $ErrorController=new ErrorController($this);
