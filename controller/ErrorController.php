@@ -11,6 +11,7 @@ class ErrorController extends Controller
     {
 
         $this->setContent('Страница отсутствует');
+        return $this->getView();
 
     }
 

@@ -79,7 +79,7 @@ class Router
         if (class_exists($class)) {
             $controller=new $class($this);
         } else {
-            Redirect::View('/error');
+
             $controller=new ErrorController($this);
         }
         return $controller;
@@ -92,14 +92,9 @@ class Router
         $method=$this->getControllerMethodName();
 
         if (($method) and ($this->hasRoute($this->uri)) and method_exists($controller,$method)) return $controller->$method();
-        if (!$method) {
-            $newController=new ErrorController($this);
-            return $newController->index();
 
-        }
-
-        $newController=new ErrorController($this);
-        return $newController->index();
+        $ErrorController=new ErrorController($this);
+        return $ErrorController->index();
 
 
     }
