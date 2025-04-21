@@ -6,9 +6,6 @@ use classes\controller\IConnection;
 use Exception;
 
 
-
-
-
 class Model
 {
     public object $connection;
@@ -17,7 +14,6 @@ class Model
     public function __construct(IConnection $connection)
     {
         $this->connection = $connection->getConnect();
-
     }
 
     public function insert(string $sql, ?array $variables = []): bool
@@ -32,8 +28,7 @@ class Model
             $stmt->execute();
             return $stmt->get_result();
         } catch (Exception $e) {
-            var_dump($e);
-          //  Redirect::View('/errorDB');
+
             return false;
         }
 
@@ -52,8 +47,7 @@ class Model
 
             return true;
         } catch (Exception $e) {
-            var_dump($e);
-          //  Redirect::View('/errorDB');
+
             return false;
         }
 

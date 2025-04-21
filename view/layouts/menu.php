@@ -13,6 +13,11 @@ $routes_natural_person = [
         'method'=>'create',
 
     ],
+    '/physicalperson/deposit/create'=>[
+        'name'=>'Заявка на вклад (физическое лицо)',
+        'controller'=>'NaturalPersonalDepositController',
+        'method'=>'create'
+    ],
      '/physicalperson/credit/index'=>[
     'name'=>'Список заявок на кредит',
     'controller'=>'NaturalPersonalCreditController',
