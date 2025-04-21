@@ -49,7 +49,6 @@ class Model
      * @param array|null $variables parameters included in sql query
      * @return bool select from in database
      */
-
     public function select(string $sql, ?array $variables = []): bool
     {
         try {
@@ -71,7 +70,7 @@ class Model
 
     /**
      * @param string $type type of conversion of a query result to a database
-     * @return mixed associative/object|array
+     * @return mixed associative|object|array
      */
 
     public function get(string $type = 'row')

@@ -112,8 +112,8 @@ class Router
 
     }
 
-    /**
-     * @return void executes the method for current route
+    /** executes the method for current route
+     * @return void
      */
     public function makeControllerMethod ()
     {
