@@ -80,7 +80,10 @@ class NaturalPersonCreditApplication
 
     public static function All () :?object
     {
+
         $model=new Model(Connection::getInstance());
+
+
         try {
             $model->select("SELECT u.surname,u.name,u.middle_name, cr.open, cr.close, cr.amount, ct.name AS chart_type  FROM `clients` as c INNER JOIN client_type AS cs ON c.client_type_id = cs.id
                                                                        INNER JOIN credit AS cr ON c.id = cr.client_id
@@ -88,6 +91,8 @@ class NaturalPersonCreditApplication
                                                                        INNER JOIN user AS u ON np.user_id = u.id
                                                                        INNER JOIN chart_type AS ct ON cr.chart_type_id = ct.id 
                                                                        ");
+
+
             return $model;
         }catch (Exception $e) {
 

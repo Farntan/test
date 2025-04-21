@@ -45,7 +45,7 @@ class Connection implements IConnection
 
         try {
             mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-            $db = @mysqli_connect($host, $user, $pass, $db, $port);
+            $db = mysqli_connect($host, $user, $pass, $db, $port);
             $db->set_charset($charset);
             $db->options(MYSQLI_OPT_INT_AND_FLOAT_NATIVE, 1);
             $this->connection = $db;
@@ -71,6 +71,7 @@ class Connection implements IConnection
 
     public function getConnect ()
     {
+
         if  ($this->connection) return $this->connection;
         Redirect::View('/errorDB/status');
     }
