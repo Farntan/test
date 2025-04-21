@@ -8,8 +8,15 @@ class NaturalPersonCreditApplication
 {
     public NaturalPerson $naturalPerson;
     public CreditProduct $creditProduct;
+    /**
+     * @var string type of client
+     */
     private string $client_type;
 
+    /**
+     * @param NaturalPerson $naturalPerson
+     * @param CreditProduct $creditProduct
+     */
     public function __construct(NaturalPerson $naturalPerson, CreditProduct $creditProduct)
     {
         $this->client_type='физическое лицо';
@@ -18,8 +25,9 @@ class NaturalPersonCreditApplication
 
     }
 
-
-
+    /**
+     * @return bool
+     */
     public function save () :bool
     {
         $model=new Model(Connection::getInstance());

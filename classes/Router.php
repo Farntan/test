@@ -12,21 +12,29 @@ class Router
     /**
      * @var mixed
      */
-    private $uri;
+    private string $uri;
 
+    /**
+     * creates a class based on the configuration file routes/web.php and the current URI
+     */
     public function __construct()
     {
         $this->routes = include "./routes/web.php";
         $this->uri = $_SERVER['REQUEST_URI'];
     }
 
+    /**
+     * @return string current URI
+     */
     public function getUri () :string {
-
        return $this->uri;
-
-
     }
-    public function hasRoute ($uri) :bool {
+
+    /**
+     * @param string $uri checked for availability URI in Routes
+     * @return bool
+     */
+    public function hasRoute (string $uri) :bool {
 
         if (isset($this->routes[$uri])) {
             return true;
@@ -37,6 +45,10 @@ class Router
 
     }
 
+    /**
+     * @param string $uri URI which we are looking for Route
+     * @return array  get Route by URI
+     */
     public function getRouteByUri (string $uri) :array {
 
         switch ($uri) {
@@ -52,12 +64,19 @@ class Router
 
     }
 
+    /**
+     * @return array get current route
+     */
     public function getRoute () :array {
 
         return $this->getRouteByUri($this->uri);
 
 
     }
+
+    /**
+     * @return string  get controller name for current route
+     */
     public function getControllerName () :string
     {
         $route=$this->getRoute();
@@ -65,13 +84,20 @@ class Router
         return $route['controller'];
 
     }
-    public function getControllerMethodName ()
+
+    /**
+     * @return  string controller method name for current route
+     */
+    public function getControllerMethodName () :string
     {
         $route=$this->getRoute();
 
         return $route['method'];
     }
 
+    /**
+     * @return Controller get Controller for current route
+     */
     public function getController () :Controller
     {
         $controllerName=$this->getControllerName();
@@ -85,6 +111,10 @@ class Router
         return $controller;
 
     }
+
+    /**
+     * @return void executes the method for current route
+     */
     public function makeControllerMethod ()
     {
         $controller=$this->getController();

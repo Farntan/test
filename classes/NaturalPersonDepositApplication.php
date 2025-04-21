@@ -8,7 +8,16 @@ class NaturalPersonDepositApplication
 {
     public NaturalPerson $naturalPerson;
     public DepositProduct $depositProduct;
+
+    /**
+     * @var string type of client
+     */
     private string $client_type;
+
+    /**
+     * @param NaturalPerson $naturalPerson
+     * @param DepositProduct $depositProduct
+     */
 
     public function __construct(NaturalPerson $naturalPerson,  DepositProduct $depositProduct)
     {
@@ -18,7 +27,9 @@ class NaturalPersonDepositApplication
 
     }
 
-
+    /**
+     * @return bool
+     */
 
     public function save () :bool
     {
@@ -70,11 +81,14 @@ class NaturalPersonDepositApplication
 
     }
 
-    public static function All () :?object
+    /**
+     * @return Model|null
+     */
+    public static function All () :?Model
     {
         $model=new Model(Connection::getInstance());
         try {
-            $type_client = $model->select("SELECT u.surname,u.name,u.middle_name, cr.open, cr.close, cr.amount, ct.name AS chart_type  FROM `clients` as c INNER JOIN client_type AS cs ON c.client_type_id = cs.id
+            $model->select("SELECT u.surname,u.name,u.middle_name, cr.open, cr.close, cr.amount, ct.name AS chart_type  FROM `clients` as c INNER JOIN client_type AS cs ON c.client_type_id = cs.id
                                                                        INNER JOIN credit AS cr ON c.id = cr.client_id
                                                                        INNER JOIN natural_person AS np ON c.id = np.client_id
                                                                        INNER JOIN user AS u ON np.user_id = u.id
@@ -82,7 +96,6 @@ class NaturalPersonDepositApplication
                                                                        ");
             return $model;
         }catch (Exception $e) {
-
 
            return null;
 

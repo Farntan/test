@@ -1,20 +1,21 @@
 <?php
 
 namespace controller;
-use classes\Model;
+
 use classes\Connection;
-use classes\config;
+use classes\Config;
 use classes\Controller;
 
 
 class ErrorDBController extends Controller
 {
 
-
-
+    /**
+     * @return void creates a frontend with the status of working with the database
+     */
     public function status () :void
     {
-        $config = new config();
+        $config = new Config();
 
         $connection=Connection::getInstance();
         $connection->connect($config->get('host'),

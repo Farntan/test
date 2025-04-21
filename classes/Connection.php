@@ -18,6 +18,9 @@ class Connection implements IConnection
 
     }
 
+    /**
+     * @return Connection  class for working with MYSQL,Singleton Pattern
+     */
     static public function getInstance() :Connection{
 
         if(is_null(self::$_instance))
@@ -28,6 +31,15 @@ class Connection implements IConnection
 
     }
 
+    /**
+     * @param string $host  host name
+     * @param string $user  user name
+     * @param string $pass  password
+     * @param string $db    name database
+     * @param integer  $port  port number
+     * @param string $charset encoding name
+     * @return bool
+     */
     public function connect ($host, $user, $pass, $db, $port,$charset) :bool
     {
 
@@ -47,6 +59,10 @@ class Connection implements IConnection
 
         }
     }
+
+    /**
+     * @return bool checking the connection with the database
+     */
     public function getStatus () :bool{
 
         if  (($this->connection) and ($this->connection->ping())) return true;
@@ -58,6 +74,10 @@ class Connection implements IConnection
         if  ($this->connection) return $this->connection;
         Redirect::View('/errorDB/status');
     }
+
+    /**
+     * @return void disconnecting from the database
+     */
 
     public function disconnect ()
     {

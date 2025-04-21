@@ -1,6 +1,6 @@
 <?php
-use classes\config;
-$config=new config();
+use classes\Config;
+$config=new Config();
 
 
 $name=$config->get('name');

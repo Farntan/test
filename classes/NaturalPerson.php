@@ -13,7 +13,17 @@ class NaturalPerson
     public string $passportNumber;
     public string $passportData;
 
-    public function __construct($surname, $name, $middleName, $inn, $dateBirth, $passportSeries, $passportNumber, $passportData)
+    /**
+     * @param string $surname
+     * @param string $name
+     * @param string $middleName
+     * @param int $inn
+     * @param string $dateBirth
+     * @param string $passportSeries
+     * @param string $passportNumber
+     * @param string $passportData
+     */
+    public function __construct(string $surname, string $name, string $middleName, int  $inn, string $dateBirth, string $passportSeries, string $passportNumber, string $passportData)
     {
         $this->surname = $surname;
         $this->name = $name;
@@ -25,8 +35,5 @@ class NaturalPerson
         $this->passportData = $passportData;
     }
 
-    public function save () {
-
-    }
 
 }

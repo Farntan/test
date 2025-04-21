@@ -6,6 +6,10 @@ namespace classes;
 
 class Redirect
 {
+    /** redirecting a request by URI name
+     * @param string $name URI name
+     * @return void
+     */
     public static function View (string $name)
     {
         $domain = $_SERVER['HTTP_HOST'];

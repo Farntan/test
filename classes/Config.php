@@ -4,20 +4,21 @@ namespace classes;
 
 
 
-class config
+class Config
 {
 
-
     private  $config;
+    /**
+     * class with project configuration properties
+     */
     public function __construct()
     {
-
         $this->config=include "./config/app.php";
     }
 
     /**
-     * @param string $name
-     * @return string
+     * @param string $name name of the property in the configuration file
+     * @return string getting a property from a configuration file
      */
     public function get(string $name) :string   {
 

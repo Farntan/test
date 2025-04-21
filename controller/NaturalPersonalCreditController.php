@@ -15,7 +15,9 @@ use classes\Request;
 class NaturalPersonalCreditController extends Controller
 {
 
-
+    /** creates a frontend with a list of all loan applications from individuals
+     * @return void
+     */
     public function index () {
 
         $applications=NaturalPersonCreditApplication::All();
@@ -23,12 +25,19 @@ class NaturalPersonalCreditController extends Controller
         $this->getView();
 
     }
+
+    /** creates a frontend for creating a new loan application from an individual
+     * @return void
+     */
     public function create () {
 
         $this->content= include('./view/reports/form_natural_person_credit.php');
         $this->getView();
     }
 
+    /** saving a new loan application from an individual
+     * @return void
+     */
     public function store () {
         $request=new Request();
         $naturalPerson=new NaturalPerson(   $request->all['surname'],$request->all['name'],$request->all['patronymic'],$request->all['inn'],

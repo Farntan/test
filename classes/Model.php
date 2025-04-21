@@ -11,10 +11,19 @@ class Model
     public object $connection;
     public ?object $result = null;
 
+    /** Class of working with the database
+     * @param IConnection $connection class for connecting to a database
+     */
     public function __construct(IConnection $connection)
     {
         $this->connection = $connection->getConnect();
     }
+
+    /**
+     * @param string $sql sql query
+     * @param array|null $variables parameters included in sql query
+     * @return bool insert parameters in database
+     */
 
     public function insert(string $sql, ?array $variables = []): bool
     {
@@ -35,6 +44,12 @@ class Model
 
     }
 
+    /**
+     * @param string $sql sql query
+     * @param array|null $variables parameters included in sql query
+     * @return bool select from in database
+     */
+
     public function select(string $sql, ?array $variables = []): bool
     {
         try {
@@ -53,6 +68,11 @@ class Model
 
 
     }
+
+    /**
+     * @param string $type type of conversion of a query result to a database
+     * @return mixed associative/object|array
+     */
 
     public function get(string $type = 'row')
     {

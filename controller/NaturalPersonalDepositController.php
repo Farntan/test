@@ -3,20 +3,27 @@
 namespace controller;
 
 use classes\Controller;
-use classes\CreditProduct;
 use classes\DepositProduct;
 use classes\NaturalPerson;
+use classes\NaturalPersonDepositApplication;
 use classes\Redirect;
 use classes\Request;
 
 
 class NaturalPersonalDepositController extends Controller
 {
+    /** creates a frontend for creating a new deposits application from an individual
+     * @return void
+     */
     public function create () {
 
         $this->content= include('./view/reports/form_natural_person_deposit.php');
         $this->getView();
     }
+
+    /** saving a new deposits application from an individual
+     * @return void
+     */
 
     public function store () {
         $request=new Request();
