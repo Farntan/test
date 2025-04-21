@@ -16,8 +16,8 @@ class ErrorDBController extends Controller
     {
         $config = new config();
 
-        $connect=Connection::getInstance();
-        $connect->connect($config->get('host'),
+        $connection=Connection::getInstance();
+        $connection->connect($config->get('host'),
             $config->get('user'),
             $config->get('password'),
             $config->get('database'),
@@ -25,7 +25,7 @@ class ErrorDBController extends Controller
             $config->get('charset'));
 
 
-        if ($connect->getStatus()) {
+        if ($connection->getStatus()) {
             $this->setContent('<h3 class="text-success">Есть соединение</h3>');
             $this->getView();
         }
