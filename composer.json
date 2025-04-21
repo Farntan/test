@@ -2,17 +2,17 @@
 
     "autoload": {
         "classmap": [
-            "classes/config.php",
-            "classes/router.php",
-            "classes/controller.php",
-            "classes/client.php",
-            "classes/connection.php",
-            "classes/model.php",
-            "classes/redirect.php",
-            "classes/request.php",
-            "classes/natural_person.php",
-            "classes/credit_product.php",
-            "classes/natural_person_credit_application.php",
+          "classes/Config.php",
+          "classes/Router.php",
+          "classes/Controller.php",
+          "classes/Client.php",
+          "classes/Connection.php",
+          "classes/Model.php",
+          "classes/Redirect.php",
+          "classes/Request.php",
+          "classes/NaturalPerson.php",
+          "classes/CreditProduct.php",
+          "classes/NaturalPersonCreditApplication.php",
             "classes/interface/IController.php",
             "classes/interface/IClient.php",
             "classes/interface/IConnection.php"
