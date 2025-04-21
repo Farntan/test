@@ -7,12 +7,12 @@ $full_name=include('full_name.php');
 
 $inn_data_birth="
 <div class='row'>
-<div class='col-6'>
-$inn
-</div>
-<div class='col-6'>
-$data_birth
-</div>
+    <div class='col-6'>
+        $inn
+    </div>
+    <div class='col-6'>
+        $data_birth
+    </div>
 </div>
 
 ";
