@@ -74,7 +74,7 @@ class NaturalPersonCreditApplication
     {
         $model=new Model(Connection::getInstance());
         try {
-            $type_client = $model->select("SELECT u.surname,u.name,u.middle_name, cr.open, cr.close, cr.amount, ct.name AS chart_type  FROM `clients` as c INNER JOIN client_type AS cs ON c.client_type_id = cs.id
+            $model->select("SELECT u.surname,u.name,u.middle_name, cr.open, cr.close, cr.amount, ct.name AS chart_type  FROM `clients` as c INNER JOIN client_type AS cs ON c.client_type_id = cs.id
                                                                        INNER JOIN credit AS cr ON c.id = cr.client_id
                                                                        INNER JOIN natural_person AS np ON c.id = np.client_id
                                                                        INNER JOIN user AS u ON np.user_id = u.id

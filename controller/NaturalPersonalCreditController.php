@@ -2,21 +2,19 @@
 
 namespace controller;
 
-use classes\Connection;
+
 use classes\Controller;
 use classes\CreditProduct;
-use classes\Model;
 use classes\NaturalPerson;
 use classes\NaturalPersonCreditApplication;
 use classes\Redirect;
 use classes\Request;
-use classes\Router;
-use Exception;
+
 
 
 class NaturalPersonalCreditController extends Controller
 {
-    public string $client_type;
+
 
     public function index () {
 
