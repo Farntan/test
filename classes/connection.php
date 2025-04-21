@@ -2,12 +2,13 @@
 
 namespace classes;
 use classes\controller\IConnection;
+use Exception;
 use mysqli;
 use mysqli_sql_exception;
 
 class Connection implements IConnection
 {
-    private object $connection;
+    private ?object $connection=null;
 
     private static ?object $_instance = null;
 
@@ -29,31 +30,35 @@ class Connection implements IConnection
 
     }
 
-    public function connect ($host, $user, $pass, $db, $port,$charset)
+    public function connect ($host, $user, $pass, $db, $port,$charset) :bool
     {
-        mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-        try {
 
-            $db = new mysqli($host, $user, $pass, $db, $port);
+        try {
+            mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+            $db = @mysqli_connect($host, $user, $pass, $db, $port);
             $db->set_charset($charset);
             $db->options(MYSQLI_OPT_INT_AND_FLOAT_NATIVE, 1);
             $this->connection = $db;
+            var_dump($this->connection);
+            return true;
+        } catch (mysqli_sql_exception  $e) {
+            return false;
 
-        } catch (mysqli_sql_exception $e) {
-
-            Redirect::View('/errorDB');
 
 
 
         }
     }
-    public function getStatus () {
-        return $this->connection->ping();
+    public function getStatus () :bool{
+
+        if  (($this->connection) and ($this->connection->ping())) return true;
+        return false;
     }
 
     public function getConnect () :object
     {
-        return $this->connection;
+        if  ($this->connection) return $this->connection;
+        return Redirect::View('/errorDB/status');
     }
 
     public function disconnect ()

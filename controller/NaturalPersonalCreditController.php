@@ -17,11 +17,6 @@ use Exception;
 class NaturalPersonalCreditController extends Controller
 {
     public string $client_type;
-    public function __construct(Router $router)    {
-
-
-        parent::__construct($router);
-    }
 
     public function index () {
         $model=new Model(Connection::getInstance());

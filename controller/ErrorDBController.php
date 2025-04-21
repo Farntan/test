@@ -9,6 +9,9 @@ use classes\Controller;
 
 class ErrorDBController extends Controller
 {
+
+    
+
     public function status () :void
     {
         $config = new config();
