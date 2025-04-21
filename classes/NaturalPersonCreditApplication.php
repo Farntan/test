@@ -43,6 +43,7 @@ class NaturalPersonCreditApplication
         $close=$this->creditProduct->closeData;
         $chart_type_id=$this->creditProduct->chart_type;
         $amount=$this->creditProduct->amount;
+        $periodCredit=$this->creditProduct->periodCredit;
         try {
             $model->connection->begin_transaction();
 
@@ -62,10 +63,10 @@ class NaturalPersonCreditApplication
                 $user_id=$model->connection->insert_id;
             }
             $model->insert ("INSERT INTO `natural_person`(`client_id`, `user_id`) VALUES (?,?)",[$client_id,$user_id]);
-            $model->insert ("INSERT INTO `credit`(`client_id`,`open`, `close`, `chart_type_id`, `amount`) VALUES (?,?,?,?,?)",[$client_id,$open,$close,$chart_type_id,$amount]);
+            $model->insert ("INSERT INTO `credit`(`client_id`,`open`, `close`, `chart_type_id`, `amount`,`credit_period`) VALUES (?,?,?,?,?,?)",[$client_id,$open,$close,$chart_type_id,$amount,$periodCredit]);
 
             $model->connection->commit();
-            $model->connection->disconnect();
+
             return true;
         } catch (Exception $e) {
 

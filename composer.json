@@ -12,6 +12,7 @@
           "classes/Request.php",
           "classes/NaturalPerson.php",
           "classes/CreditProduct.php",
+          "classes/DepositProduct.php",
           "classes/NaturalPersonCreditApplication.php",
           "classes/NaturalPersonDepositApplication.php",
             "classes/interface/IController.php",

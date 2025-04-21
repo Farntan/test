@@ -43,6 +43,7 @@ class NaturalPersonalCreditController extends Controller
         $request=new Request();
         $NaturalPersonCreditApplication_id=$request->all['id'];
 
+        //TODO create a form with payment schedules
         var_dump(NaturalPersonCreditApplication::getById($NaturalPersonCreditApplication_id)->get());
     }
 

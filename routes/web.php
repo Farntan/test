@@ -32,6 +32,21 @@ return [
         'controller'=>'NaturalPersonalDepositController',
         'method'=>'create'
     ],
+    '/physicalperson/deposit/index'=>[
+        'name'=>'Список заявок на депозит',
+        'controller'=>'NaturalPersonalDepositController',
+        'method'=>'index'
+    ],
+    '/physicalperson/deposit/store'=>[
+        'name'=>'Создание продукта',
+        'controller'=>'NaturalPersonalDepositController',
+        'method'=>'store'
+    ],
+    '/physicalperson/deposit/show'=>[
+        'name'=>'Данные заявки',
+        'controller'=>'NaturalPersonalDepositController',
+        'method'=>'show'
+    ],
     '/error'=>[
         'name'=>'Error',
         'controller'=>'ErrorController',

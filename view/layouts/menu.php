@@ -22,7 +22,13 @@ $routes_natural_person = [
     'name'=>'Список заявок на кредит',
     'controller'=>'NaturalPersonalCreditController',
     'method'=>'index'
-],
+     ],
+    '/physicalperson/deposit/index'=>[
+        'name'=>'Список заявок на вклад',
+        'controller'=>'NaturalPersonalDepositController',
+        'method'=>'index'
+    ],
+
 
 ];
 $list='';

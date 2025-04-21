@@ -33,6 +33,7 @@ class NaturalPersonDepositApplication
 
     public function save () :bool
     {
+
         $model=new Model(Connection::getInstance());
         $inn=$this->naturalPerson->inn;
         $surname=$this->naturalPerson->surname;
@@ -45,8 +46,9 @@ class NaturalPersonDepositApplication
         $open=$this->depositProduct->openData;
         $close=$this->depositProduct->closeData;
         $periodDeposit=$this->depositProduct->periodDeposit;
+        $bit=$this->depositProduct->percent;
         $capitalization_frequency_id=$this->depositProduct->capitalization_frequency;
-      /*  try {
+       try {
             $model->connection->begin_transaction();
 
             $model->select ("SELECT * FROM `client_type` WHERE name=?",[$this->client_type]);
@@ -65,10 +67,11 @@ class NaturalPersonDepositApplication
                 $user_id=$model->connection->insert_id;
             }
             $model->insert ("INSERT INTO `natural_person`(`client_id`, `user_id`) VALUES (?,?)",[$client_id,$user_id]);
-            $model->insert ("INSERT INTO `deposit`(`client_id`,`open`, `close`, `chart_type_id`, `amount`) VALUES (?,?,?,?,?)",[$client_id,$open,$close,$chart_type_id,$amount]);
+            $model->insert ("INSERT INTO `deposits`(`client_id`,`open`, `close`, `deposit_period`, `bit`, `сapitalization_type_id`) VALUES (?,?,?,?,?,?)",
+                                                        [$client_id,$open,$close,$periodDeposit,$bit,$capitalization_frequency_id]);
 
             $model->connection->commit();
-            $model->connection->disconnect();
+
             return true;
         } catch (Exception $e) {
 
@@ -76,7 +79,7 @@ class NaturalPersonDepositApplication
             $model->connection->disconnect();
             return false;
 
-        }*/
+        }
 
 
     }
@@ -88,11 +91,11 @@ class NaturalPersonDepositApplication
     {
         $model=new Model(Connection::getInstance());
         try {
-            $model->select("SELECT u.surname,u.name,u.middle_name, cr.open, cr.close, cr.amount, ct.name AS chart_type  FROM `clients` as c INNER JOIN client_type AS cs ON c.client_type_id = cs.id
-                                                                       INNER JOIN credit AS cr ON c.id = cr.client_id
+            $model->select("SELECT c.id, u.surname,u.name,u.middle_name, dep.open, dep.close, dep.bit, dep.deposit_period,ct.name AS сapitalization_type  FROM `clients` as c INNER JOIN client_type AS cs ON c.client_type_id = cs.id
+                                                                       INNER JOIN deposits AS dep ON c.id = dep.client_id
                                                                        INNER JOIN natural_person AS np ON c.id = np.client_id
                                                                        INNER JOIN user AS u ON np.user_id = u.id
-                                                                       INNER JOIN chart_type AS ct ON cr.chart_type_id = ct.id 
+                                                                       INNER JOIN сapitalization_type AS ct ON dep.сapitalization_type_id = ct.id 
                                                                        ");
             return $model;
         }catch (Exception $e) {
@@ -101,5 +104,29 @@ class NaturalPersonDepositApplication
 
         }
 
+    }
+
+    public static function getById (int $id) :?object
+    {
+        $model=new Model(Connection::getInstance());
+
+
+        try {
+            $model->select("SELECT c.id, u.surname,u.name,u.middle_name, dep.open, dep.close, dep.bit, dep.deposit_period,ct.name AS сapitalization_type  FROM `clients` as c INNER JOIN client_type AS cs ON c.client_type_id = cs.id
+                                                                       INNER JOIN deposits AS dep ON c.id = dep.client_id
+                                                                       INNER JOIN natural_person AS np ON c.id = np.client_id
+                                                                       INNER JOIN user AS u ON np.user_id = u.id
+                                                                       INNER JOIN сapitalization_type AS ct ON dep.сapitalization_type_id = ct.id 
+                                WHERE c.id = ?",[$id]);
+
+
+
+            return $model;
+        }catch (Exception $e) {
+
+
+            return null;
+
+        }
     }
 }

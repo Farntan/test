@@ -682,6 +682,7 @@ class ComposerStaticInit5c0677f153235d6c4464beb866c2bf11
         'classes\\Connection' => __DIR__ . '/../..' . '/classes/Connection.php',
         'classes\\Controller' => __DIR__ . '/../..' . '/classes/Controller.php',
         'classes\\CreditProduct' => __DIR__ . '/../..' . '/classes/CreditProduct.php',
+        'classes\\DepositProduct' => __DIR__ . '/../..' . '/classes/DepositProduct.php',
         'classes\\Model' => __DIR__ . '/../..' . '/classes/Model.php',
         'classes\\NaturalPerson' => __DIR__ . '/../..' . '/classes/NaturalPerson.php',
         'classes\\NaturalPersonCreditApplication' => __DIR__ . '/../..' . '/classes/NaturalPersonCreditApplication.php',
