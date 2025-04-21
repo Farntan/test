@@ -3,7 +3,7 @@
 $list= '<ol class="list-group list-group-numbered">';
 while ($application=$applications->get('object')) {
 
-    $list.='<li class="list-group-item">'.
+    $list.='<li class="list-group-item"><a class="link-secondary" href="/physicalperson/credit/show?id='.$application->id.'">'.
         $application->surname.' '.$application->name.' '.$application->middle_name.', '.
         ' дата открытия: '. $application->open.
         ', дата закрытия: '. $application->close.
@@ -12,7 +12,7 @@ while ($application=$applications->get('object')) {
 
 
 
-        '</li>';
+        '</a></li>';
 
 
 

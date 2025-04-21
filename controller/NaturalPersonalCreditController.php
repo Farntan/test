@@ -35,6 +35,17 @@ class NaturalPersonalCreditController extends Controller
         $this->getView();
     }
 
+    /** returns the frontend with the data of the individual's loan application
+     * @return void
+     */
+
+    public function show () {
+        $request=new Request();
+        $NaturalPersonCreditApplication_id=$request->all['id'];
+
+        var_dump(NaturalPersonCreditApplication::getById($NaturalPersonCreditApplication_id)->get());
+    }
+
     /** saving a new loan application from an individual
      * @return void
      */

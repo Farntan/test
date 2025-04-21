@@ -16,15 +16,18 @@ class Model
      */
     public function __construct(IConnection $connection)
     {
+        if (!$connection->getConnect()) {
+            $config=new Config();
+            $connection->connect($config->get('host'),
+                $config->get('user'),
+                $config->get('password'),
+                $config->get('database'),
+                $config->get('port'),
+                $config->get('charset'));
+        }
 
-        $config = new Config();
 
-        $connection->connect($config->get('host'),
-            $config->get('user'),
-            $config->get('password'),
-            $config->get('database'),
-            $config->get('port'),
-            $config->get('charset'));
+
         $this->connection = $connection->getConnect();
     }
 

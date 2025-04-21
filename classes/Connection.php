@@ -36,7 +36,7 @@ class Connection implements IConnection
      * @param string $user  user name
      * @param string $pass  password
      * @param string $db    name database
-     * @param integer  $port  port number
+     * @param integer $port  port number
      * @param string $charset encoding name
      * @return bool
      */
@@ -69,11 +69,11 @@ class Connection implements IConnection
         return false;
     }
 
-    public function getConnect ()
+    public function getConnect () :?object
     {
 
-        if  ($this->connection) return $this->connection;
-        Redirect::View('/errorDB/status');
+        return $this->connection;
+
     }
 
     /**

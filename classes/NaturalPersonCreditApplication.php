@@ -83,23 +83,41 @@ class NaturalPersonCreditApplication
 
         $model=new Model(Connection::getInstance());
 
-
         try {
-            $model->select("SELECT u.surname,u.name,u.middle_name, cr.open, cr.close, cr.amount, ct.name AS chart_type  FROM `clients` as c INNER JOIN client_type AS cs ON c.client_type_id = cs.id
+            $model->select("SELECT c.id, u.surname,u.name,u.middle_name, cr.open, cr.close, cr.amount, ct.name AS chart_type  FROM `clients` as c INNER JOIN client_type AS cs ON c.client_type_id = cs.id
                                                                        INNER JOIN credit AS cr ON c.id = cr.client_id
                                                                        INNER JOIN natural_person AS np ON c.id = np.client_id
                                                                        INNER JOIN user AS u ON np.user_id = u.id
                                                                        INNER JOIN chart_type AS ct ON cr.chart_type_id = ct.id 
                                                                        ");
 
+            return $model;
+        }catch (Exception $e) {
+           return null;
+        }
+
+    }
+    public static function getById (int $id) :?object
+    {
+        $model=new Model(Connection::getInstance());
+
+
+        try {
+            $model->select("SELECT c.id, u.surname,u.name,u.middle_name, cr.open, cr.close, cr.amount, ct.name AS chart_type  FROM `clients` as c INNER JOIN client_type AS cs ON c.client_type_id = cs.id
+                                                                       INNER JOIN credit AS cr ON c.id = cr.client_id
+                                                                       INNER JOIN natural_person AS np ON c.id = np.client_id
+                                                                       INNER JOIN user AS u ON np.user_id = u.id
+                                                                       INNER JOIN chart_type AS ct ON cr.chart_type_id = ct.id 
+                                WHERE c.id = ?",[$id]);
+
+
 
             return $model;
         }catch (Exception $e) {
 
 
-           return null;
+            return null;
 
         }
-
     }
 }

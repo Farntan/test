@@ -12,7 +12,11 @@ class Router
     /**
      * @var mixed
      */
+
+    private string $fullUri;
+
     private string $uri;
+    private ?string $query;
 
     /**
      * creates a class based on the configuration file routes/web.php and the current URI
@@ -20,7 +24,10 @@ class Router
     public function __construct()
     {
         $this->routes = include "./routes/web.php";
-        $this->uri = $_SERVER['REQUEST_URI'];
+        $this->fullUri = $_SERVER['REQUEST_URI'];
+
+        $this->uri = parse_url ($this->fullUri)['path'];
+        $this->query = parse_url ($this->fullUri)['query'];
     }
 
     /**
@@ -35,6 +42,7 @@ class Router
      * @return bool
      */
     public function hasRoute (string $uri) :bool {
+
 
         if (isset($this->routes[$uri])) {
             return true;
@@ -100,6 +108,8 @@ class Router
      */
     public function getController () :Controller
     {
+
+
         $controllerName=$this->getControllerName();
         $class="controller\\".$controllerName;
         if (class_exists($class)) {
@@ -118,13 +128,8 @@ class Router
     public function makeControllerMethod ()
     {
         $controller=$this->getController();
-
         $method=$this->getControllerMethodName();
-
-
-
         if (($method) and ($this->hasRoute($this->uri)) and method_exists($controller,$method)) return $controller->$method();
-
         $ErrorController=new ErrorController($this);
         return $ErrorController->index();
 
