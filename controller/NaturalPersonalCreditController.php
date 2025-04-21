@@ -35,7 +35,7 @@ class NaturalPersonalCreditController extends Controller
         $request=new Request();
         $naturalPerson=new NaturalPerson(   $request->all['surname'],$request->all['name'],$request->all['patronymic'],$request->all['inn'],
                                             $request->all['data_birth'],$request->all['series'],$request->all['number'],$request->all['date_issue']);
-        $creditProduct=new CreditProduct(   $request->all['date_open'],$request->all['date_close'],$request->all['deposit_amount'],$request->all['payment_schedule']);
+        $creditProduct=new CreditProduct(   $request->all['date_open'],$request->all['date_close'],$request->all['deposit_amount'],$request->all['credit_period'],$request->all['payment_schedule']);
         $naturalPersonCreditApplication=new NaturalPersonCreditApplication($naturalPerson,$creditProduct);
 
         if ($naturalPersonCreditApplication->save())  Redirect::View('/physicalperson/credit/index');
