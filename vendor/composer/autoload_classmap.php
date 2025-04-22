@@ -636,7 +636,6 @@ return array(
     'TheSeer\\Tokenizer\\TokenCollectionException' => $vendorDir . '/theseer/tokenizer/src/TokenCollectionException.php',
     'TheSeer\\Tokenizer\\Tokenizer' => $vendorDir . '/theseer/tokenizer/src/Tokenizer.php',
     'TheSeer\\Tokenizer\\XMLSerializer' => $vendorDir . '/theseer/tokenizer/src/XMLSerializer.php',
-    'classes\\Client' => $baseDir . '/classes/Client.php',
     'classes\\Config' => $baseDir . '/classes/Config.php',
     'classes\\Connection' => $baseDir . '/classes/Connection.php',
     'classes\\Controller' => $baseDir . '/classes/Controller.php',
@@ -651,7 +650,6 @@ return array(
     'classes\\Redirect' => $baseDir . '/classes/Redirect.php',
     'classes\\Request' => $baseDir . '/classes/Request.php',
     'classes\\Router' => $baseDir . '/classes/Router.php',
-    'classes\\controller\\IClient' => $baseDir . '/classes/interface/IClient.php',
     'classes\\controller\\IConnection' => $baseDir . '/classes/interface/IConnection.php',
     'classes\\controller\\IController' => $baseDir . '/classes/interface/IController.php',
 );
