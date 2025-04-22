@@ -42,9 +42,8 @@ class NaturalPersonalCreditController extends Controller
     public function show () {
         $request=new Request();
         $NaturalPersonCreditApplication_id=$request->all['id'];
-       // var_dump($request);
-        //TODO create a form with payment schedules
-       //var_dump(NaturalPersonCreditApplication::getById($NaturalPersonCreditApplication_id)->get('object'));
+        $application=NaturalPersonCreditApplication::getById($NaturalPersonCreditApplication_id)->get('object');
+
         $this->content= include ('./view/applications/natural_person/credit/application_data.php');
         $this->getView();
     }
@@ -56,7 +55,7 @@ class NaturalPersonalCreditController extends Controller
         $request=new Request();
         $naturalPerson=new NaturalPerson(   $request->all['surname'],$request->all['name'],$request->all['patronymic'],$request->all['inn'],
                                             $request->all['data_birth'],$request->all['series'],$request->all['number'],$request->all['date_issue']);
-        $creditProduct=new CreditProduct(   $request->all['date_open'],$request->all['date_close'],$request->all['deposit_amount'],$request->all['credit_period'],$request->all['payment_schedule']);
+        $creditProduct=new CreditProduct(   $request->all['data_open'],$request->all['data_open'],$request->all['deposit_amount'],$request->all['credit_period'],$request->all['payment_schedule']);
         $naturalPersonCreditApplication=new NaturalPersonCreditApplication($naturalPerson,$creditProduct);
 
         if ($naturalPersonCreditApplication->save())  Redirect::View('/physicalperson/credit/index');

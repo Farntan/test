@@ -5,7 +5,7 @@ return '
 
   <input type="text" class="form-control me-2" value="'.$application->surname.'" id="surname" name="surname" placeholder="Фамилия" required maxlength="50" '.$element_availability.'>
   <input type="text" class="form-control me-2" value="'.$application->name.'" id="name" name="name" placeholder="Имя" required maxlength="50" '.$element_availability.'>
-  <input type="text" class="form-control" value=""'.$application->middle_name.'" id="patronymic" name="patronymic" placeholder="отчество" required maxlength="50" '.$element_availability.'>
+  <input type="text" class="form-control" value="'.$application->middle_name.'" id="patronymic" name="patronymic" placeholder="отчество" required maxlength="50" '.$element_availability.'>
 </div>
 
 

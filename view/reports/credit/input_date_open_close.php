@@ -8,7 +8,7 @@ return '
  <label for="date_open" class="form-label">Дата открытия</label>
 <div class="input-group mb-3" id="date_open">
       
-        <input type="date" class="form-control me-2" placeholder="дата открытия"  name="date_open" value="'.$application->date_open.'"
+        <input type="date" class="form-control me-2" placeholder="дата открытия"  name="data_open" value="'.$application->open.'"
                 aria-label="дата открытия" min="' . $min_date . '" required '.$element_availability.'>
      </div>  
 </div>
@@ -16,7 +16,7 @@ return '
 <label for="date_close" class="form-label">Дата закрытия</label>
   <div class="input-group mb-3" id="date_open"> 
        
-        <input type="date" class="form-control" placeholder="дата закрытия"  name="date_close" value="'.$application->date_close.'"
+        <input type="date" class="form-control" placeholder="дата закрытия"  name="data_close" value="'.$application->close.'"
                     aria-label="дата закрытия" min="' . $min_date . '" required '.$element_availability.'> 
     </div>
 </div>   

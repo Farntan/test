@@ -12,7 +12,7 @@ while ($application=$applications->get('object')) {
                       <td>'.$application->chart_type.'</td>
                       <td>'.$application->amount.'</td>
                       <td>
-                        <a class="link-secondary" href="/physicalperson/credit/show?id='.$application->id.'"><i class="bi bi-eye"></i></a>
+                        <a class="link-secondary" href="/physicalperson/credit/show?id='.$application->id.'"><i class="bi bi-eye">просмотр</i></a>
                       </td>
             </tr>';
 
@@ -41,3 +41,5 @@ $table='
 
 
 ';
+
+return $table;

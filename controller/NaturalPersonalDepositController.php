@@ -58,8 +58,9 @@ class NaturalPersonalDepositController extends Controller
     public function show () {
         $request=new Request();
         $NaturalPersonDepositApplication_id=$request->all['id'];
-        //TODO create a form with payment schedules
-    //    var_dump(NaturalPersonDepositApplication::getById($NaturalPersonDepositApplication_id)->get('object'));
+
+        $application=NaturalPersonDepositApplication::getById($NaturalPersonDepositApplication_id)->get('object');
+
         $this->content= include ('./view/applications/natural_person/deposit/application_data.php');
         $this->getView();
     }

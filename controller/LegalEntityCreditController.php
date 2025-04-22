@@ -43,16 +43,17 @@ class LegalEntityCreditController extends Controller
      */
     public function store () {
         $request=new Request();
-        var_dump($request); exit;
 
+        var_dump($request);
         $legalEntity=new LegalEntity(       $request->all['surname'],$request->all['name'],$request->all['patronymic'],
                                             $request->all['inn'],
                                             $request->all['address_organization'],$request->all['name_organization'],
                                             $request->all['ogrn'],$request->all['inn_organization'],
                                             $request->all['kpp']);
-        $creditProduct=new CreditProduct(   $request->all['date_open'],$request->all['date_close'],
+        $creditProduct=new CreditProduct(   $request->all['data_open'],$request->all['data_close'],
                                             $request->all['deposit_amount'],$request->all['credit_period'],
                                             $request->all['payment_schedule']);
+        var_dump($legalEntity,$creditProduct); exit;
         $naturalPersonCreditApplication=new LegalEntityCreditApplication($legalEntity,$creditProduct);
 
         if ($naturalPersonCreditApplication->save())  Redirect::View('/legal_entity/credit/index');

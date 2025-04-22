@@ -4,7 +4,7 @@ namespace classes;
 
 use Exception;
 
-class LegalEntityCreditApplication
+class LegalEntityCreditApplication extends Model
 {
     public LegalEntity $legalPerson;
     public CreditProduct $creditProduct;
@@ -19,6 +19,7 @@ class LegalEntityCreditApplication
      */
     public function __construct(LegalEntity $legalPerson, CreditProduct $creditProduct)
     {
+        parent::__construct();
         $this->client_type='юридическое лицо';
         $this->legalPerson = $legalPerson;
         $this->creditProduct = $creditProduct;
@@ -46,32 +47,32 @@ class LegalEntityCreditApplication
         $amount=$this->creditProduct->amount;
         $periodCredit=$this->creditProduct->periodCredit;
         try {
-            $model->connection->begin_transaction();
+            $this->connection->begin_transaction();
 
-            $model->select ("SELECT * FROM `client_type` WHERE name=?",[$this->client_type]);
+            $this->select ("SELECT * FROM `client_type` WHERE name=?",[$this->client_type]);
             $type_client_id=$model->get('object')->id;
 
-            $model->insert ("INSERT INTO `clients`(`client_type_id`) VALUES (?)",[$type_client_id]);
-            $client_id=$model->connection->insert_id;
-            $model->select ("SELECT * FROM `user` WHERE inn=?",[$inn]);
-            $user=$model->get('object');
+            $this->insert ("INSERT INTO `clients`(`client_type_id`) VALUES (?)",[$type_client_id]);
+            $client_id=$this->connection->insert_id;
+            $this->select ("SELECT * FROM `user` WHERE inn=?",[$inn]);
+            $user=$this->get('object');
 
             if ($user->id) {
                 $user_id = $user->id;
             }else{
-                $model->insert ("INSERT INTO `user`(`surname`, `name`, `middle_name`, `inn`, `date_birth`, `passport_series`, `passport_number`, `passport_data`) VALUES 
+                $this->insert ("INSERT INTO `user`(`surname`, `name`, `middle_name`, `inn`, `date_birth`, `passport_series`, `passport_number`, `passport_data`) VALUES 
                                                         (?,?,?,?,?,?,?,?)",[$surname,$name,$middle_name,$inn,$date_birth,$passport_series, $passport_number, $passport_data]);
-                $user_id=$model->connection->insert_id;
+                $user_id=$this->connection->insert_id;
             }
-            $model->insert ("INSERT INTO `natural_person`(`client_id`, `user_id`) VALUES (?,?)",[$client_id,$user_id]);
-            $model->insert ("INSERT INTO `credit`(`client_id`,`open`, `close`, `chart_type_id`, `amount`,`credit_period`) VALUES (?,?,?,?,?,?)",[$client_id,$open,$close,$chart_type_id,$amount,$periodCredit]);
+            $this->insert ("INSERT INTO `natural_person`(`client_id`, `user_id`) VALUES (?,?)",[$client_id,$user_id]);
+            $this->insert ("INSERT INTO `credit`(`client_id`,`open`, `close`, `chart_type_id`, `amount`,`credit_period`) VALUES (?,?,?,?,?,?)",[$client_id,$open,$close,$chart_type_id,$amount,$periodCredit]);
 
-            $model->connection->commit();
+            $this->connection->commit();
 
             return true;
         } catch (Exception $e) {
 
-            $model->connection->rollBack();
+            $this->connection->rollBack();
 
             return false;
 

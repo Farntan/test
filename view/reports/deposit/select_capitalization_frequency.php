@@ -1,18 +1,18 @@
 <?php
 
-$selected_text = $application->capitalization_frequency;
+$selected_text = $application->сapitalization_type;
 $select_array = ['в конце срока', 'ежемесячно'];
 $main_selected = 'selected';
 $option_list = '';
 foreach ($select_array as $key => $value) {
     $selected = '';
-
+    $index=$key+1;
     if ($value === $selected_text) {
         $selected = 'selected';
         $main_selected = '';
     }
 
-    $option_list .= '<option ' . $selected . ' value="' . $key . '" >' . $value . '</option>';
+    $option_list .= '<option ' . $selected . ' value="' . $index . '" >' . $value . '</option>';
 }
 
 return '
