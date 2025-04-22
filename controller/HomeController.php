@@ -6,8 +6,8 @@ use classes\Controller;
 
 class HomeController extends Controller
 {
-    /**
-     * @return void creates the frontend of the home page
+    /** creates the frontend of the home page
+     * @return void
      */
     public function index () {
         $string= include('./view/home/home.php');

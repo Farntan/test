@@ -58,8 +58,8 @@ return [
         'method'=>'store'
     ],
     '/legal_entity/credit/index'=>[
-            'name'=>'Список заявок на депозит (в виде списка)',
-            'controller'=>'NaturalPersonalDepositController',
+            'name'=>'Список заявок на депозит (в виде таблицы)',
+            'controller'=>'LegalEntityCreditController',
             'method'=>'index'
     ],
 

@@ -50,7 +50,7 @@ $routes_legal_entity =[
         'method'=>'create'
     ],
     '/legal_entity/credit/index'=>[
-        'name'=>'Список заявок на депозит (в виде списка)',
+        'name'=>'Список заявок на депозит (в виде таблицы)',
         'controller'=>'NaturalPersonalDepositController',
         'method'=>'index'
     ],

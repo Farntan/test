@@ -55,6 +55,10 @@ class NaturalPersonalDepositController extends Controller
 
     }
 
+    /** returns the frontend with the application form for review
+     * @return void
+     */
+
     public function show () {
         $request=new Request();
         $NaturalPersonDepositApplication_id=$request->all['id'];

@@ -123,7 +123,7 @@ class Router
     }
 
     /** executes the method for current route
-     * @return void
+     * @return void|string
      */
     public function makeControllerMethod ()
     {
@@ -132,7 +132,7 @@ class Router
 
         if (($method) and ($this->hasRoute($this->uri)) and method_exists($controller,$method)) return $controller->$method();
         $ErrorController=new ErrorController($this);
-        return $ErrorController->index();
+        $ErrorController->index();
 
 
     }

@@ -17,18 +17,19 @@ use classes\Request;
 class LegalEntityCreditController extends Controller
 {
 
-    /** creates a frontend with a list of all loan applications from individuals
+    /** creates a frontend with a list of all loan applications from legal entity
      * @return void
      */
     public function index () {
 
-        $applications=NaturalPersonCreditApplication::All();
-        $this->content= include ('./view/applications/natural_person/credit/table.php');
+        $applications=LegalEntityCreditApplication::All();
+
+        $this->content= include ('./view/applications/legal_entity/credit/table.php');
         $this->getView();
 
     }
 
-    /** creates a frontend for creating a new loan application from an legal entity
+    /** creates a frontend for creating a new loan application from on legal entity
      * @return void
      */
     public function create () {
@@ -38,13 +39,13 @@ class LegalEntityCreditController extends Controller
     }
 
 
-    /** saving a new loan application from an legal entity
+    /** saving a new loan application from on legal entity
      * @return void
      */
     public function store () {
         $request=new Request();
 
-        var_dump($request);
+
         $legalEntity=new LegalEntity(       $request->all['surname'],$request->all['name'],$request->all['patronymic'],
                                             $request->all['inn'],
                                             $request->all['address_organization'],$request->all['name_organization'],
@@ -53,7 +54,7 @@ class LegalEntityCreditController extends Controller
         $creditProduct=new CreditProduct(   $request->all['data_open'],$request->all['data_close'],
                                             $request->all['deposit_amount'],$request->all['credit_period'],
                                             $request->all['payment_schedule']);
-        var_dump($legalEntity,$creditProduct); exit;
+
         $naturalPersonCreditApplication=new LegalEntityCreditApplication($legalEntity,$creditProduct);
 
         if ($naturalPersonCreditApplication->save())  Redirect::View('/legal_entity/credit/index');
