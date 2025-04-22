@@ -1,6 +1,10 @@
 <?php
 return [
-
+    '/'=>[
+        'name'=>'Доступные заявки',
+        'controller'=>'HomeController',
+        'method'=>'index'
+    ],
     '/home'=>[
         'name'=>'Доступные заявки',
         'controller'=>'HomeController',
