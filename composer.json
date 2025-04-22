@@ -15,6 +15,7 @@
           "classes/DepositProduct.php",
           "classes/NaturalPersonCreditApplication.php",
           "classes/NaturalPersonDepositApplication.php",
+          "classes/LegalEntityCreditApplication.php",
             "classes/interface/IController.php",
             "classes/interface/IClient.php",
             "classes/interface/IConnection.php"

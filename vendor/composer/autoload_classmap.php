@@ -642,6 +642,7 @@ return array(
     'classes\\Controller' => $baseDir . '/classes/Controller.php',
     'classes\\CreditProduct' => $baseDir . '/classes/CreditProduct.php',
     'classes\\DepositProduct' => $baseDir . '/classes/DepositProduct.php',
+    'classes\\LegalEntityCreditApplication' => $baseDir . '/classes/LegalEntityCreditApplication.php',
     'classes\\Model' => $baseDir . '/classes/Model.php',
     'classes\\NaturalPerson' => $baseDir . '/classes/NaturalPerson.php',
     'classes\\NaturalPersonCreditApplication' => $baseDir . '/classes/NaturalPersonCreditApplication.php',

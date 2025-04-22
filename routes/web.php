@@ -47,6 +47,26 @@ return [
         'controller'=>'NaturalPersonalDepositController',
         'method'=>'show'
     ],
+    '/legal_entity/credit/create'=>[
+        'name'=>'Заявка на кредит (юридическое лицо)',
+        'controller'=>'LegalEntityCreditController',
+        'method'=>'create'
+    ],
+    '/legal_entity/credit/store'=>[
+        'name'=>'Создание продукта',
+        'controller'=>'LegalEntityCreditController',
+        'method'=>'store'
+    ],
+    '/legal_entity/credit/index'=>[
+            'name'=>'Список заявок на депозит (в виде списка)',
+            'controller'=>'NaturalPersonalDepositController',
+            'method'=>'index'
+    ],
+
+
+
+
+
     '/error'=>[
         'name'=>'Error',
         'controller'=>'ErrorController',

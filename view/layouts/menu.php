@@ -43,6 +43,33 @@ foreach ($routes_natural_person as $uri => $route) {
  </li>";
 }
 
+$routes_legal_entity =[
+    '/legal_entity/credit/create'=>[
+        'name'=>'Заявка на кредит (юридическое лицо)',
+        'controller'=>'LegalEntityCreditController',
+        'method'=>'create'
+    ],
+    '/legal_entity/credit/index'=>[
+        'name'=>'Список заявок на депозит (в виде списка)',
+        'controller'=>'NaturalPersonalDepositController',
+        'method'=>'index'
+    ],
+];
+
+$list_legal_entity='';
+
+foreach ($routes_legal_entity as $uri => $route) {
+
+    $name = $route['name'];
+    $disabled='';
+    if ($name===$nameCurrentUri) $disabled='disabled ';
+
+    $list_legal_entity .= " <li class='dropdown-item'>
+<a class='dropdown-item $disabled text-uppercase' href='$uri' target='_blank' >$name</a>
+ </li>";
+}
+
+
 
 $persons_menu='<li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -56,7 +83,11 @@ $persons_menu='<li class="nav-item dropdown">
 <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Юридические лица
-          </a>          
+          </a>  
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+            '.$list_legal_entity.'
+            
+          </ul>        
 </li>
 ';
 if ($this->router->getUri()==='/home') $homeDisabled = 'disabled'; else $homeDisabled = 'active';
