@@ -5,7 +5,6 @@
           "classes/Config.php",
           "classes/Router.php",
           "classes/Controller.php",
-          "classes/Client.php",
           "classes/Connection.php",
           "classes/Model.php",
           "classes/Redirect.php",
@@ -18,7 +17,6 @@
           "classes/NaturalPersonDepositApplication.php",
           "classes/LegalEntityCreditApplication.php",
             "classes/interface/IController.php",
-            "classes/interface/IClient.php",
             "classes/interface/IConnection.php"
 
 
