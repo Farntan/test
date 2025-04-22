@@ -9,6 +9,7 @@ class NaturalPersonDepositApplication
     public NaturalPerson $naturalPerson;
     public DepositProduct $depositProduct;
 
+
     /**
      * @var string type of client
      */
