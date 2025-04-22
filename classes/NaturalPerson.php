@@ -25,6 +25,7 @@ class NaturalPerson
      */
     public function __construct(string $surname, string $name, string $middleName, int  $inn, string $dateBirth, string $passportSeries, string $passportNumber, string $passportData)
     {
+
         $this->surname = $surname;
         $this->name = $name;
         $this->middleName = $middleName;

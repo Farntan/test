@@ -71,7 +71,7 @@ class NaturalPersonCreditApplication
         } catch (Exception $e) {
 
             $model->connection->rollBack();
-            $model->connection->disconnect();
+
             return false;
 
         }

@@ -42,9 +42,11 @@ class NaturalPersonalCreditController extends Controller
     public function show () {
         $request=new Request();
         $NaturalPersonCreditApplication_id=$request->all['id'];
-
+       // var_dump($request);
         //TODO create a form with payment schedules
-        var_dump(NaturalPersonCreditApplication::getById($NaturalPersonCreditApplication_id)->get());
+       //var_dump(NaturalPersonCreditApplication::getById($NaturalPersonCreditApplication_id)->get('object'));
+        $this->content= include ('./view/applications/natural_person/credit/application_data.php');
+        $this->getView();
     }
 
     /** saving a new loan application from an individual

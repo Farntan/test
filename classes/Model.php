@@ -8,7 +8,7 @@ use Exception;
 
 class Model
 {
-    public object $connection;
+    public ?object $connection;
     public ?object $result = null;
 
     /** Class of working with the database
@@ -16,14 +16,16 @@ class Model
      */
     public function __construct(IConnection $connection)
     {
+
         if (!$connection->getConnect()) {
             $config=new Config();
-            $connection->connect($config->get('host'),
+            if (!$connection->connect($config->get('host'),
                 $config->get('user'),
                 $config->get('password'),
                 $config->get('database'),
                 $config->get('port'),
-                $config->get('charset'));
+                $config->get('charset'))) Redirect::View('/errorDB/status');
+
         }
 
 

@@ -1,14 +1,27 @@
 <?php
 
+$selected_text = $application->payment_schedule;
+$select_array = ['аннуитетный', 'дифференцированный'];
+$main_selected = 'selected';
+$option_list = '';
+foreach ($select_array as $key => $value) {
+    $selected = '';
+
+    if ($value === $selected_text) {
+        $selected = 'selected';
+        $main_selected = '';
+    }
+
+    $option_list .= '<option ' . $selected . ' value="' . $key . '" >' . $value . '</option>';
+}
 
 
 return '
 
 <label for="payment_schedule" class="form-label">График платежей</label>
-<select class="form-select" name="payment_schedule" id="payment_schedule" aria-label="Default select example">
-  <option selected disabled>Выберите график платежей</option>
-  <option value="1">аннуитетный</option>
-  <option value="2">дифференцированный</option>
+<select class="form-select" name="payment_schedule" id="payment_schedule" aria-label="Default select example" ' . $element_availability . '>
+  <option ' . $main_selected . ' disabled>Выберите график платежей</option>
+  ' . $option_list . '
  
 </select>
 
