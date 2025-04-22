@@ -28,7 +28,7 @@ return [
         'method'=>'show'
     ],
     '/physicalperson/deposit/create'=>[
-        'name'=>'Заявка на вклад (физическое лицо)',
+        'name'=>'Заявка на депозит (физическое лицо)',
         'controller'=>'NaturalPersonalDepositController',
         'method'=>'create'
     ],
