@@ -79,10 +79,6 @@ class Connection implements IConnection
      * @return void disconnecting from the database
      */
 
-    public function disconnect ()
-    {
-        if ($this->connection) mysqli_close($this->connection);
-    }
 
 
 }

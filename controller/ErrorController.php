@@ -8,9 +8,9 @@ use classes\Controller;
 class ErrorController extends Controller
 {
     /**
-     * @return null creates a frontend with the response that the page does not exist
+     * @return void creates a frontend with the response that the page does not exist
      */
-    public function index ()
+    public function index () :void
     {
         $this->setContent('Страница отсутствует');
         $this->getView();
