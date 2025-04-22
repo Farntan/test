@@ -28,12 +28,12 @@ return [
         'method'=>'show'
     ],
     '/physicalperson/deposit/create'=>[
-        'name'=>'Заявка на депозит (физическое лицо)',
+        'name'=>'Заявка на вклад (физическое лицо)',
         'controller'=>'NaturalPersonalDepositController',
         'method'=>'create'
     ],
     '/physicalperson/deposit/index'=>[
-        'name'=>'Список заявок на депозит (в виде списка)',
+        'name'=>'Список заявок на вклад (в виде списка)',
         'controller'=>'NaturalPersonalDepositController',
         'method'=>'index'
     ],
@@ -43,7 +43,7 @@ return [
         'method'=>'store'
     ],
     '/physicalperson/deposit/show'=>[
-        'name'=>'Просмотр заявки на депозит',
+        'name'=>'Просмотр заявки на вклад',
         'controller'=>'NaturalPersonalDepositController',
         'method'=>'show'
     ],
@@ -58,7 +58,7 @@ return [
         'method'=>'store'
     ],
     '/legal_entity/credit/index'=>[
-            'name'=>'Список заявок на депозит (в виде таблицы)',
+            'name'=>'Список заявок на кредит (в виде таблицы)',
             'controller'=>'LegalEntityCreditController',
             'method'=>'index'
     ],
