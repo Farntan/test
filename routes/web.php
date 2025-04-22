@@ -23,7 +23,7 @@ return [
         'method'=>'index'
     ],
     '/physicalperson/credit/show'=>[
-        'name'=>'Данные заявки',
+        'name'=>'Просмотр заявки на кредит',
         'controller'=>'NaturalPersonalCreditController',
         'method'=>'show'
     ],
@@ -43,7 +43,7 @@ return [
         'method'=>'store'
     ],
     '/physicalperson/deposit/show'=>[
-        'name'=>'Данные заявки',
+        'name'=>'Просмотр заявки на депозит',
         'controller'=>'NaturalPersonalDepositController',
         'method'=>'show'
     ],
