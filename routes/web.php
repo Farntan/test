@@ -18,7 +18,7 @@ return [
         'method'=>'store'
     ],
     '/physicalperson/credit/index'=>[
-        'name'=>'Список заявок на кредит',
+        'name'=>'Список заявок на кредит (в виде таблицы)',
         'controller'=>'NaturalPersonalCreditController',
         'method'=>'index'
     ],
@@ -33,7 +33,7 @@ return [
         'method'=>'create'
     ],
     '/physicalperson/deposit/index'=>[
-        'name'=>'Список заявок на депозит',
+        'name'=>'Список заявок на депозит (в виде списка)',
         'controller'=>'NaturalPersonalDepositController',
         'method'=>'index'
     ],

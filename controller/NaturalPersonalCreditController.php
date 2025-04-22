@@ -21,7 +21,7 @@ class NaturalPersonalCreditController extends Controller
     public function index () {
 
         $applications=NaturalPersonCreditApplication::All();
-        $this->content= include ('./view/applications/natural_person/credit/list.php');
+        $this->content= include ('./view/applications/natural_person/credit/table.php');
         $this->getView();
 
     }
