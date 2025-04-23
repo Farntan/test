@@ -1,3 +1,4 @@
+
 <?php
 
 $selected_text = $application->сapitalization_type;
