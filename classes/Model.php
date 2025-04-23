@@ -3,6 +3,8 @@
 namespace classes;
 
 use classes\controller\IConnection;
+use DOMDocument;
+use DOMException;
 use Exception;
 
 
@@ -89,6 +91,8 @@ class Model
     public function get(string $type = 'row')
     {
         switch ($type) {
+            case 'xml':
+                return $this->getXml();
             case 'assoc':
                 return $this->result->fetch_assoc();
             case 'object':
@@ -96,6 +100,27 @@ class Model
             default:
                 return $this->result->fetch_row();
         }
+
+
+    }
+
+
+    /**
+     * @throws DOMException
+     */
+    private function getXml()
+    {
+        $dom = new DOMDocument("1.0", "utf-8");
+        while ($model=$this->get('object')) {
+            $root=$dom->createElement('model');
+            foreach ($model as $name=>$value) {
+                $ch_element=$dom->createElement($name, $value);
+                $root->appendChild($ch_element);
+            }
+            $dom->appendChild($root);
+        }
+
+        return $dom->saveXML();
 
 
     }

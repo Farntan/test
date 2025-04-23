@@ -95,6 +95,9 @@ class NaturalPersonCreditApplication extends Model
                                                                        INNER JOIN chart_type AS ct ON cr.chart_type_id = ct.id 
                                                                        ");
 
+
+            exit;
+
             return $model;
         }catch (Exception $e) {
            return null;
