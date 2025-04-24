@@ -107,6 +107,7 @@ class Model
 
     /**
      * @throws DOMException
+     * @return string return XML as a string
      */
     private function getXml()
     {

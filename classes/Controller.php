@@ -49,5 +49,10 @@ class Controller implements IController
         $this->content=$string;
     }
 
+    public function getViewFromXLSTPatton(string $xml, string $xlst) :void
+    {
+
+
+    }
 
 }
