@@ -28,7 +28,11 @@
                     <td><xsl:value-of select="chart_type"/></td>
                     <td><xsl:value-of select="amount"/></td>
                     <td>
-                        <a class="link-secondary" href="/physicalperson/credit/show?id=5"><i class="bi bi-eye">просмотр</i></a>
+                        <a class="link-secondary" href="/physicalperson/credit/show?id=5">
+                        <xsl:attribute name="href">/physicalperson/credit/show?id=<xsl:value-of select="id" />
+                        </xsl:attribute>
+                            <i class="bi bi-eye">просмотр</i>
+                        </a>
                     </td>
                 </tr>;
 
