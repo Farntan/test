@@ -96,7 +96,6 @@ class NaturalPersonCreditApplication extends Model
                                                                        ");
 
 
-            exit;
 
             return $model;
         }catch (Exception $e) {
