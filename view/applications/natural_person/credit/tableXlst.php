@@ -2,6 +2,7 @@
  return '
 <xsl:stylesheet version = "1.0"
      xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+     
        <xsl:template match="/">
         <table class="table">
             <thead>
@@ -16,9 +17,16 @@
     
                 </tr>
            </thead>
+       <xsl:variable name="index" select="1"/>
        <xsl:for-each select="model">
+        
             <tr>
-                    <th scope="row">$i</th>
+                    <th scope="row">
+                         
+                             <xsl:value-of select="position()" />
+                              
+                    
+                    </th>
                     <td>    <xsl:value-of select="surname"/>
                             <xsl:value-of select="name"/>
                             <xsl:value-of select="middle_name"/>
@@ -38,6 +46,7 @@
 
 
         </xsl:for-each>
+      
        
     </table>
      </xsl:template>
