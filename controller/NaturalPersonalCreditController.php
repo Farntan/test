@@ -9,7 +9,7 @@ use classes\NaturalPerson;
 use classes\NaturalPersonCreditApplication;
 use classes\Redirect;
 use classes\Request;
-
+use classes\XLST;
 
 
 class NaturalPersonalCreditController extends Controller
@@ -21,7 +21,11 @@ class NaturalPersonalCreditController extends Controller
     public function index () {
 
         $applications=NaturalPersonCreditApplication::All();
-        $this->content= include ('./view/applications/natural_person/credit/table.php');
+     //   $this->content= include ('./view/applications/natural_person/credit/table.php');
+        $xlst=new XLST($applications->get('xml'),include ('./view/applications/natural_person/credit/table.xlst'));
+    var_dump($xlst);
+        exit;
+
         $this->getView();
 
     }

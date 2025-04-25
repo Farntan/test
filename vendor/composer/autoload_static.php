@@ -691,6 +691,7 @@ class ComposerStaticInit5c0677f153235d6c4464beb866c2bf11
         'classes\\Redirect' => __DIR__ . '/../..' . '/classes/Redirect.php',
         'classes\\Request' => __DIR__ . '/../..' . '/classes/Request.php',
         'classes\\Router' => __DIR__ . '/../..' . '/classes/Router.php',
+        'classes\\XLST' => __DIR__ . '/../..' . '/classes/XLST.php',
         'classes\\controller\\IConnection' => __DIR__ . '/../..' . '/classes/interface/IConnection.php',
         'classes\\controller\\IController' => __DIR__ . '/../..' . '/classes/interface/IController.php',
     );

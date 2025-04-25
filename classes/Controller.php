@@ -21,6 +21,7 @@ class Controller implements IController
     public function __construct(Router $router)
         {
             $this->router=$router;
+
         }
 
     /**
@@ -49,10 +50,6 @@ class Controller implements IController
         $this->content=$string;
     }
 
-    public function getViewFromXLSTPatton(string $xml, string $xlst) :void
-    {
 
-
-    }
 
 }

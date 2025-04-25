@@ -13,6 +13,7 @@
           "classes/CreditProduct.php",
           "classes/DepositProduct.php",
           "classes/LegalEntity.php",
+          "classes/XLST.php",
           "classes/NaturalPersonCreditApplication.php",
           "classes/NaturalPersonDepositApplication.php",
           "classes/LegalEntityCreditApplication.php",
