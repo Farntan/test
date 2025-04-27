@@ -31,8 +31,7 @@ class XLST
         $proc->importStylesheet($xsl);
 
 // Обработка парсером исходного XML-документа
-        $parsed = $proc->transformToXml($xml);
-        echo ($parsed);
+        return $proc->transformToXml($xml);
 
     }
 

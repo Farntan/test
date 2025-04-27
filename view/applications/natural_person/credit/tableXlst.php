@@ -42,13 +42,16 @@
                             <i class="bi bi-eye">просмотр</i>
                         </a>
                     </td>
-                </tr>;
+                </tr>
 
 
         </xsl:for-each>
       
        
     </table>
-     </xsl:template>
+    <input type="button" value="Print this page" class="d-print-none" onClick="window.print()"/>
+    </xsl:template>
+    
+     
 </xsl:stylesheet>';
 
