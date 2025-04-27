@@ -50,8 +50,9 @@ class NaturalPersonalCreditController extends Controller
         $application=NaturalPersonCreditApplication::getById($NaturalPersonCreditApplication_id)->get('xml');
         $xlst=include ('./view/reports/xlst/natural_person.php');
         $trans_xlst=new XLST($application,$xlst);
+        $NT_view=$trans_xlst->transform();
 
-        $this->content=$trans_xlst->transform();
+        $this->content=$NT_view;
       //  $this->content= include ('./view/applications/natural_person/credit/application_data.php');
         $this->getView();
     }
