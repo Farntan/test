@@ -85,7 +85,7 @@ class Model
 
     /**
      * @param string $type type of conversion of a query result to a database
-     * @return mixed associative|object|array
+     * @return mixed associative|object|array|DOMDocument
      */
 
     public function get(string $type = 'row')
@@ -109,7 +109,7 @@ class Model
      * @throws DOMException
      * @return string return XML as a string
      */
-    private function getXml()
+    private function getXml() :DOMDocument
     {
         $dom = new DOMDocument("1.0", "utf-8");
         while ($model=$this->get('object')) {
@@ -121,7 +121,7 @@ class Model
             $dom->appendChild($root);
         }
 
-        return $dom->saveXML();
+        return $dom;
 
 
     }

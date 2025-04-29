@@ -3,25 +3,36 @@
 namespace classes;
 
 use DOMDocument;
+use XSLTProcessor;
+
 
 class XLST
 {
-    private string $xml;
+    private DOMDocument $xml;
     private string $xlst;
-    public function __construct(string $xml, string $xlst)
-    {
-        $this->xlst=$xlst;
-        $this->xml=$xml;
-    }
-    public function createDOM () {
-        return new DOMDocument("1.0", "utf-8");
-    }
 
-    
+    public function __construct(DOMDocument $xml, string $xlst)
+{
+    $this->xml = $xml;
+    $this->xlst = $xlst;
+}
+
     public function transform () {
-        $xml = $this->createDOM();
-        $xsl = new DOMDocument(null, 'windows-1251');
 
+
+        $xml=$this->xml;
+// Объект стиля
+        $xsl = new DOMDocument("1.0", "utf-8");
+        $xsl->loadXML($this->xlst);
+
+// Создание парсера
+        $proc = new XSLTProcessor();
+
+// Подключение стиля к парсеру
+        $proc->importStylesheet($xsl);
+
+// Обработка парсером исходного XML-документа
+        return $proc->transformToXml($xml);
 
     }
 
