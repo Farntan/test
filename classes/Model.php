@@ -92,8 +92,8 @@ class Model
     {
 
         switch ($type) {
-            case 'xmlTree':
-                return $this->getXmlTree();
+            case 'arrayTree':
+                return $this->getArrayTree();
             case 'xml':
                 return $this->getXml();
             case 'assoc':
@@ -141,7 +141,7 @@ class Model
 
     }
 
-    private function getXmlTree() :?array
+    private function getArrayTree() :?array
     {
         if ($this->result) {
             $fieldsTableMap=$this->getFieldsTableMap();
@@ -161,5 +161,9 @@ class Model
             return $entry;
         }
         return null;
+    }
+    private function getXMLTree() :?DOMDocument
+    {
+        //Todo
     }
 }
