@@ -19,7 +19,6 @@ class XLST
 
     public function transform () {
 
-
         $xml=$this->xml;
 // Объект стиля
         $xsl = new DOMDocument("1.0", "utf-8");

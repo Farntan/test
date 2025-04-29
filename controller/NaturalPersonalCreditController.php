@@ -22,11 +22,10 @@ class NaturalPersonalCreditController extends Controller
 
         $applications=NaturalPersonCreditApplication::All();
 
-     //   $this->content= include ('./view/applications/natural_person/credit/table.php');
-        //$xlst=new XLST($applications->get('arrayTree'),include ('./view/reports/xlst/natural_person.php'));
-        var_dump($applications->get('xmlTree')->save('test.xml'));
-        exit;
-        $this->content=$xlst->transform();
+        $this->content= include ('./view/applications/natural_person/credit/table.php');
+       // $xlst=new XLST($applications->get('xmlTree'),include ('./view/reports/xlst/natural_person.php'));
+
+       // $this->content=$xlst->transform();
 
         $this->getView();
 
@@ -48,13 +47,13 @@ class NaturalPersonalCreditController extends Controller
     public function show () {
         $request=new Request();
         $NaturalPersonCreditApplication_id=$request->all['id'];
-        $application=NaturalPersonCreditApplication::getById($NaturalPersonCreditApplication_id)->get('xml');
+        $application=NaturalPersonCreditApplication::getById($NaturalPersonCreditApplication_id)->get('xmlTree');
         $xlst=include ('./view/reports/xlst/natural_person.php');
         $trans_xlst=new XLST($application,$xlst);
         $NT_view=$trans_xlst->transform();
 
         $this->content=$NT_view;
-      //  $this->content= include ('./view/applications/natural_person/credit/application_data.php');
+
         $this->getView();
     }
 
