@@ -23,9 +23,9 @@ class NaturalPersonalCreditController extends Controller
         $applications=NaturalPersonCreditApplication::All();
 
      //   $this->content= include ('./view/applications/natural_person/credit/table.php');
-        $xlst=new XLST($applications->get('xml'),include ('./view/reports/xlst/natural_person.php'));
-      //  var_dump($xlst);
-      //  exit;
+    //    $xlst=new XLST($applications->get('xml'),include ('./view/reports/xlst/natural_person.php'));
+        var_dump($applications->get('xmlTree'));
+        exit;
         $this->content=$xlst->transform();
 
         $this->getView();

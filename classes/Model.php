@@ -2,7 +2,7 @@
 
 namespace classes;
 
-use classes\controller\IConnection;
+
 use DOMDocument;
 use DOMException;
 use Exception;
@@ -90,7 +90,10 @@ class Model
 
     public function get(string $type = 'row')
     {
+
         switch ($type) {
+            case 'xmlTree':
+                return $this->getXmlTree();
             case 'xml':
                 return $this->getXml();
             case 'assoc':
@@ -124,5 +127,39 @@ class Model
         return $dom;
 
 
+    }
+
+    private function getFieldsTableMap()  :?array
+    {
+        $fields=$this->result->fetch_fields();
+        $fieldsTableMap=[];
+        foreach ($fields as $field) {
+
+            $fieldsTableMap[$field->name]=$field->orgtable;
+        }
+        return   $fieldsTableMap;
+
+    }
+
+    private function getXmlTree() :?array
+    {
+        if ($this->result) {
+            $fieldsTableMap=$this->getFieldsTableMap();
+            $entry=[];
+
+            while ($row=$this->get('assoc')) {
+
+                foreach ($row as $filedName=>$value) {
+                    $tableName=$fieldsTableMap[$filedName];
+                    if (isset($entry[$tableName])){
+                        $entry[$tableName]=[];
+                    }
+                    $entry[$tableName][$filedName]=$value;
+                }
+
+            }
+            return $entry;
+        }
+        return null;
     }
 }
