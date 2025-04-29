@@ -86,12 +86,15 @@ class Model
     /**
      * @param string $type type of conversion of a query result to a database
      * @return mixed associative|object|array|DOMDocument
+     * @throws DOMException
      */
 
     public function get(string $type = 'row')
     {
 
         switch ($type) {
+            case 'xmlTree':
+                return $this->getXMLTree();
             case 'arrayTree':
                 return $this->getArrayTree();
             case 'xml':
@@ -110,7 +113,7 @@ class Model
 
     /**
      * @throws DOMException
-     * @return string return XML as a string
+     * @return DOMDocument return XML as a string
      */
     private function getXml() :DOMDocument
     {
@@ -141,6 +144,9 @@ class Model
 
     }
 
+    /**
+     * @throws DOMException
+     */
     private function getArrayTree() :?array
     {
         if ($this->result) {
@@ -162,8 +168,42 @@ class Model
         }
         return null;
     }
+
+    /**
+     * @throws DOMException
+     */
     private function getXMLTree() :?DOMDocument
     {
-        //Todo
+        if ($this->result) {
+            $fieldsTableMap=$this->getFieldsTableMap();
+
+            $dom = new DOMDocument("1.0", "utf-8");
+            $root=$dom->createElement('model');
+            while ($row=$this->get('assoc')) {
+
+                foreach ($row as $filedName=>$value) {
+                    $tableName=$fieldsTableMap[$filedName];
+                    if ($root->getElementsByTagName($tableName)->length===0){
+
+                        $tableNode=$dom->createElement($tableName);
+
+                    }else{
+                        $tableNode=$root->getElementsByTagName($tableName)[0];
+                    }
+
+                    if ($tableNode->getElementsByTagName($filedName)->length===0){
+                        $child=$dom->createElement($filedName,$value);
+                        $tableNode->appendChild($child);
+                    }
+
+                    $root->appendChild($tableNode);
+                }
+
+
+            }
+            $dom->appendChild($root);
+            return $dom;
+        }
+        return null;
     }
 }
