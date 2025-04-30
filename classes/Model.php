@@ -191,7 +191,8 @@ class Model
                 while ($row=$this->get('assoc')) {
 
                     $item=$dom->createElement('item');
-                    foreach ($row as $filedName=>$value) {                        $tableName=$fieldsTableMap[$filedName];
+                    foreach ($row as $filedName=>$value) {
+                        $tableName=$fieldsTableMap[$filedName];
 
                         if ($item->getElementsByTagName($tableName)->length===0) {
 
@@ -203,23 +204,7 @@ class Model
                         $child=$dom->createElement($filedName,$value);
                         $tableNode->appendChild($child);
                         $item->appendChild($tableNode);
-                        /* if ($item->getElementsByTagName($tableName)->length===0){
 
-                             $tableNode=$dom->createElement($tableName);
-                             var_dump('<br>create tag name - '.$tableNode->tagName);
-
-                         }else{
-                             $tableNode=$item->getElementsByTagName($tableName)[0];
-                             var_dump('<br>find tag name - '.$tableNode->tagName);
-                         }
-
-                         if ($tableNode->getElementsByTagName($filedName)->length===0){
-                             $child=$dom->createElement($filedName,$value);
-                             $item->appendChild($child);
-                         }
-
-                         var_dump('<br>element tag name - '.$element->tagName);
-                         $element->appendChild($row);*/
                     }
 
                     $root->appendChild($item);
