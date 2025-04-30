@@ -636,6 +636,7 @@ return array(
     'TheSeer\\Tokenizer\\TokenCollectionException' => $vendorDir . '/theseer/tokenizer/src/TokenCollectionException.php',
     'TheSeer\\Tokenizer\\Tokenizer' => $vendorDir . '/theseer/tokenizer/src/Tokenizer.php',
     'TheSeer\\Tokenizer\\XMLSerializer' => $vendorDir . '/theseer/tokenizer/src/XMLSerializer.php',
+    'classes\\ChartType' => $baseDir . '/classes/ChartType.php',
     'classes\\Config' => $baseDir . '/classes/Config.php',
     'classes\\Connection' => $baseDir . '/classes/Connection.php',
     'classes\\Controller' => $baseDir . '/classes/Controller.php',

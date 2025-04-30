@@ -14,6 +14,10 @@ class Model
     public ?object $connection;
     public ?object $result = null;
 
+    public static function getClassName () {
+        return get_class();
+    }
+
 
     /** Class of working with the database
      *
@@ -86,19 +90,17 @@ class Model
     /**
      * @param string $type type of conversion of a query result to a database
      * @return mixed associative|object|array|DOMDocument
-     * @throws DOMException
      */
 
-    public function get(string $type = 'row')
+    public function get(string $type = 'row',$className='model')
     {
-
         switch ($type) {
             case 'xmlTree':
-                return $this->getXMLTree();
+                return $this->getXMLTree($className);
             case 'arrayTree':
                 return $this->getArrayTree();
             case 'xml':
-                return $this->getXml();
+                return $this->getXml($className);
             case 'assoc':
                 return $this->result->fetch_assoc();
             case 'object':
@@ -112,22 +114,32 @@ class Model
 
 
     /**
-     * @throws DOMException
-     * @return DOMDocument return XML as a string
+     * @return DOMDocument|null return XML as a string
      */
-    private function getXml() :DOMDocument
+    private function getXml(string $className='model') :?DOMDocument
     {
-        $dom = new DOMDocument("1.0", "utf-8");
-        while ($model=$this->get('object')) {
+        try {
+
+            $dom = new DOMDocument("1.0", "utf-8");
             $root=$dom->createElement('model');
-            foreach ($model as $name=>$value) {
-                $ch_element=$dom->createElement($name, $value);
-                $root->appendChild($ch_element);
+            while ($model=$this->get('object')) {
+                var_dump($className);
+                $element=$dom->createElement($className);
+                foreach ($model as $name=>$value) {
+                    $ch_element=$dom->createElement($name, $value);
+                    $element->appendChild($ch_element);
+                }
+                $root->appendChild($element);
             }
+
             $dom->appendChild($root);
+            return $dom;
+
+        } catch (DOMException $DOMException) {
+            echo $DOMException;
+            return null;
         }
 
-        return $dom;
 
 
     }
@@ -144,9 +156,7 @@ class Model
 
     }
 
-    /**
-     * @throws DOMException
-     */
+
     private function getArrayTree() :?array
     {
         if ($this->result) {
@@ -169,40 +179,64 @@ class Model
         return null;
     }
 
-    /**
-     * @throws DOMException
-     */
-    private function getXMLTree() :?DOMDocument
+
+    private function getXMLTree(string $className) :?DOMDocument
     {
+
         if ($this->result) {
             $fieldsTableMap=$this->getFieldsTableMap();
+            try {
+                $dom = new DOMDocument("1.0", "utf-8");
+                $root=$dom->createElement($className);
+                while ($row=$this->get('assoc')) {
 
-            $dom = new DOMDocument("1.0", "utf-8");
-            $root=$dom->createElement('model');
-            while ($row=$this->get('assoc')) {
+                    $item=$dom->createElement('item');
+                    foreach ($row as $filedName=>$value) {                        $tableName=$fieldsTableMap[$filedName];
 
-                foreach ($row as $filedName=>$value) {
-                    $tableName=$fieldsTableMap[$filedName];
-                    if ($root->getElementsByTagName($tableName)->length===0){
+                        if ($item->getElementsByTagName($tableName)->length===0) {
 
-                        $tableNode=$dom->createElement($tableName);
+                            $tableNode=$dom->createElement($tableName);
+                        }else{
+                            $tableNode=$item->getElementsByTagName($tableName)[0];
 
-                    }else{
-                        $tableNode=$root->getElementsByTagName($tableName)[0];
-                    }
-
-                    if ($tableNode->getElementsByTagName($filedName)->length===0){
+                        }
                         $child=$dom->createElement($filedName,$value);
                         $tableNode->appendChild($child);
+                        $item->appendChild($tableNode);
+                        /* if ($item->getElementsByTagName($tableName)->length===0){
+
+                             $tableNode=$dom->createElement($tableName);
+                             var_dump('<br>create tag name - '.$tableNode->tagName);
+
+                         }else{
+                             $tableNode=$item->getElementsByTagName($tableName)[0];
+                             var_dump('<br>find tag name - '.$tableNode->tagName);
+                         }
+
+                         if ($tableNode->getElementsByTagName($filedName)->length===0){
+                             $child=$dom->createElement($filedName,$value);
+                             $item->appendChild($child);
+                         }
+
+                         var_dump('<br>element tag name - '.$element->tagName);
+                         $element->appendChild($row);*/
                     }
 
-                    $root->appendChild($tableNode);
+                    $root->appendChild($item);
+
                 }
 
+                $dom->appendChild($root);
 
+
+                return $dom;
+
+
+            } catch (DOMException $DOMException) {
+                echo $DOMException;
+                return null;
             }
-            $dom->appendChild($root);
-            return $dom;
+
         }
         return null;
     }

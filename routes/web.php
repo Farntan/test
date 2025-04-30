@@ -31,6 +31,11 @@ return [
         'controller'=>'NaturalPersonalCreditController',
         'method'=>'show'
     ],
+    '/physicalperson/credit/edit'=>[
+        'name'=>'Просмотр заявки на кредит',
+        'controller'=>'NaturalPersonalCreditController',
+        'method'=>'edit'
+    ],
     '/physicalperson/deposit/create'=>[
         'name'=>'Заявка на вклад (физическое лицо)',
         'controller'=>'NaturalPersonalDepositController',

@@ -17,6 +17,7 @@
           "classes/NaturalPersonCreditApplication.php",
           "classes/NaturalPersonDepositApplication.php",
           "classes/LegalEntityCreditApplication.php",
+          "classes/ChartType.php",
           "classes/interface/IController.php",
           "classes/interface/IConnection.php"
 

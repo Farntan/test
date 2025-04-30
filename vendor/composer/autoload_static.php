@@ -677,6 +677,7 @@ class ComposerStaticInit5c0677f153235d6c4464beb866c2bf11
         'TheSeer\\Tokenizer\\TokenCollectionException' => __DIR__ . '/..' . '/theseer/tokenizer/src/TokenCollectionException.php',
         'TheSeer\\Tokenizer\\Tokenizer' => __DIR__ . '/..' . '/theseer/tokenizer/src/Tokenizer.php',
         'TheSeer\\Tokenizer\\XMLSerializer' => __DIR__ . '/..' . '/theseer/tokenizer/src/XMLSerializer.php',
+        'classes\\ChartType' => __DIR__ . '/../..' . '/classes/ChartType.php',
         'classes\\Config' => __DIR__ . '/../..' . '/classes/Config.php',
         'classes\\Connection' => __DIR__ . '/../..' . '/classes/Connection.php',
         'classes\\Controller' => __DIR__ . '/../..' . '/classes/Controller.php',
