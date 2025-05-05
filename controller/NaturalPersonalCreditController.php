@@ -11,6 +11,7 @@ use classes\NaturalPersonCreditApplication;
 use classes\Redirect;
 use classes\Request;
 use classes\XLST;
+use classes\XML;
 
 
 class NaturalPersonalCreditController extends Controller
@@ -49,14 +50,17 @@ class NaturalPersonalCreditController extends Controller
     public function show () {
         $request=new Request();
         $naturalPersonCreditApplication_id=$request->all['id'];
-      //  $application=NaturalPersonCreditApplication::getById($naturalPersonCreditApplication_id)->get('xmlTree','model');
-        $chartType=ChartType::All()->get('xmlTree','chart_types')->save('123123.xml');
+        $application=NaturalPersonCreditApplication::getById($naturalPersonCreditApplication_id)->get('xmlTree');
 
+        $chartType=ChartType::All()->get('xmlTree','chart_types');
+        $mergeDom=Xml::Merge($application,$chartType);
+
+       // $mergeDom->save('merge.xml');
         $xlst= file_get_contents('./view/reports/xlst/natural_person_credit.xsl');
 
         $trans_xlst=new XLST($application,$xlst);
         $NT_view=$trans_xlst->transform();
-        var_dump($NT_view);
+
         $this->content=$NT_view;
 
         $this->getView();

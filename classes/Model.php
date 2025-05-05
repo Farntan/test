@@ -92,7 +92,7 @@ class Model
      * @return mixed associative|object|array|DOMDocument
      */
 
-    public function get(string $type = 'row',$className='model')
+    public function get(string $type = 'row',$className='items')
     {
         switch ($type) {
             case 'xmlTree':
@@ -116,7 +116,7 @@ class Model
     /**
      * @return DOMDocument|null return XML as a string
      */
-    private function getXml(string $className='model') :?DOMDocument
+    private function getXml(string $className='items') :?DOMDocument
     {
         try {
 
@@ -180,7 +180,7 @@ class Model
     }
 
 
-    private function getXMLTree(string $className) :?DOMDocument
+    private function getXMLTree(string $className='items') :?DOMDocument
     {
 
         if ($this->result) {

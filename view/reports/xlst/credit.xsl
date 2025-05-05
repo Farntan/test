@@ -4,7 +4,7 @@
     <xsl:output indent="yes" method="html" />
 
 
-    <xsl:template match="/model/credit">
+    <xsl:template match="/items/item/credit">
         <div class="row">
             <div class="col-6">
                 <label for="date_open" class="form-label">Дата открытия</label>
@@ -14,9 +14,7 @@
                          <xsl:attribute name="value">
                              <xsl:value-of select="data_open"/>
                          </xsl:attribute>
-                         <xsl:attribute name="name">
-                             <xsl:value-of select="data_open"/>
-                         </xsl:attribute>
+
 
                      </input>
                 </div>
@@ -30,9 +28,7 @@
                             <xsl:attribute name="value">
                                 <xsl:value-of select="data_close"/>
                             </xsl:attribute>
-                            <xsl:attribute name="name">
-                                <xsl:value-of select="data_close"/>
-                            </xsl:attribute>
+
                     </input>
                 </div>
             </div>
@@ -46,13 +42,12 @@
                     <xsl:attribute name="value">
                         <xsl:value-of select="credit_period"/>
                     </xsl:attribute>
-                    <xsl:attribute name="name">
-                        <xsl:value-of select="credit_period"/>
-                    </xsl:attribute>
+
             </input>
 
 
         </div>
+
 
 
 

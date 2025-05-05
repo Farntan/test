@@ -652,6 +652,7 @@ return array(
     'classes\\Request' => $baseDir . '/classes/Request.php',
     'classes\\Router' => $baseDir . '/classes/Router.php',
     'classes\\XLST' => $baseDir . '/classes/XLST.php',
+    'classes\\XML' => $baseDir . '/classes/XML.php',
     'classes\\controller\\IConnection' => $baseDir . '/classes/interface/IConnection.php',
     'classes\\controller\\IController' => $baseDir . '/classes/interface/IController.php',
 );
