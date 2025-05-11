@@ -4,7 +4,7 @@
     <xsl:output indent="yes" method="html" />
 
 
-    <xsl:template  match="/items/item/user">
+    <xsl:template  match="items/item/user">
         <label for="FIO" class="form-label">Фамилия Имя Отчество</label>
         <div class="mb-3 input-group" id="FIO">
             <input type="text" class="form-control me-2" name="surname" required="required"  placeholder="Фамилия"  maxlength="50">

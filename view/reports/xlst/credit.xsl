@@ -4,7 +4,7 @@
     <xsl:output indent="yes" method="html" />
 
 
-    <xsl:template match="/items/item/credit">
+    <xsl:template match="items/item/credit">
         <div class="row">
             <div class="col-6">
                 <label for="date_open" class="form-label">Дата открытия</label>

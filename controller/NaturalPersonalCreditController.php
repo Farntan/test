@@ -58,7 +58,7 @@ class NaturalPersonalCreditController extends Controller
        // $mergeDom->save('merge.xml');
         $xlst= file_get_contents('./view/reports/xlst/natural_person_credit.xsl');
 
-        $trans_xlst=new XLST($application,$xlst);
+        $trans_xlst=new XLST($mergeDom,$xlst);
         $NT_view=$trans_xlst->transform();
 
         $this->content=$NT_view;

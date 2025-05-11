@@ -3,13 +3,16 @@
     <xsl:output indent="yes" method="html" />
 
 
-    <xsl:template  match="/items/item/clients">
-        <a class="btn btn-secondary d-print-none" tabindex="-1" role="button" aria-disabled="true">
-            <xsl:attribute name="href">
-                <xsl:value-of select="concat('/physicalperson/credit/edit?id=',id)"/>
-            </xsl:attribute>
-            <xsl:text>Редактировать</xsl:text>
-        </a>
+    <xsl:template  match="clients">
+        <div class="mt-2">
+            <a class="btn btn-secondary d-print-none" tabindex="-1" role="button" aria-disabled="true">
+                <xsl:attribute name="href">
+                    <xsl:value-of select="concat('/physicalperson/credit/edit?id=',id)"/>
+                </xsl:attribute>
+                <xsl:text>Редактировать</xsl:text>
+            </a>
+        </div>
+
 
     </xsl:template>
 
